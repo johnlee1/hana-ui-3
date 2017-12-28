@@ -1,0 +1,25 @@
+.date {
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.prayer {
+    font-size: 18px;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.story {
+    font-size: 18px;
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+
+.title {
+    font-size: 48px;
+    margin-top: 10%;
+}
+
+.writing {
+    font-family: 'Merriweather';
+}

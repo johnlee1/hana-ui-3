@@ -1,0 +1,73 @@
+<mat-sidenav-container *ngIf="true">
+
+    <!-- sidebar -->
+    <mat-sidenav mode="side" opened="true">
+
+        <div *ngIf="showSidebarMain">
+            <mat-nav-list>
+                <mat-list-item (click)="getPages()">
+                    <a matLine>Pages</a>
+                </mat-list-item>
+                <mat-list-item>
+                    <a matLine href="...">Lists</a>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+            
+        <div *ngIf="showSidebarPages">
+            <mat-nav-list>
+                <mat-list-item (click)="getMain()">
+                    <a matLine><i class="fa fa-chevron-left" aria-hidden="true"></i>  Main Menu</a>
+                </mat-list-item>
+                <div class="sidebar-header text-center">
+                    Pages
+                </div>
+                <div *ngFor="let page of adminPages">
+                    <mat-list-item (click)="getPage(page._id)">
+                        <a matLine>{{page.name}}</a>
+                    </mat-list-item>
+                </div>
+                <div *ngFor="let page of memberPages">
+                    <mat-list-item (click)="getPage(page._id)">
+                        <a matLine>{{page.name}}</a>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+        </div>
+        
+        <div *ngIf="lists">
+            Lists
+        </div>
+        
+        <div *ngIf="showSidebarPage">
+            <mat-nav-list>
+                <mat-list-item (click)="getPages()">
+                    <a matLine><i class="fa fa-chevron-left" aria-hidden="true"></i>  Pages</a>
+                </mat-list-item>
+                <div class="sidebar-header text-center">
+                    {{page.name}}
+                </div>
+                <div *ngFor="let post of posts">
+                    <mat-list-item (click)="getPost(post._id)">
+                        <a matLine>{{post.subject}}</a>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+        </div>
+
+    </mat-sidenav>
+
+    <!-- content -->
+    <mat-sidenav-content>
+
+        <div *ngIf="showContentPage">
+            {{page.name}}
+        </div>
+
+        <div *ngIf="showContentPost">
+            <app-post [post]="post"></app-post>
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
