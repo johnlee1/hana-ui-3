@@ -49,6 +49,11 @@ export class MainComponent implements OnInit {
             });
     }
 
+    getContentPage() {
+        this.showContentPost = false;
+        this.showContentPage = true;
+    }
+
     getPages() {
         this.showSidebarMain = false;
         this.showSidebarPage = false;

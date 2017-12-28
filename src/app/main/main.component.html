@@ -45,7 +45,9 @@
                     <a matLine><i class="fa fa-chevron-left" aria-hidden="true"></i>  Pages</a>
                 </mat-list-item>
                 <div class="sidebar-header text-center">
-                    {{page.name}}
+                    <mat-list-item (click)="getContentPage(page._id)">
+                        <a matLine>{{page.name}}</a>
+                    </mat-list-item>
                 </div>
                 <div *ngFor="let post of posts">
                     <mat-list-item (click)="getPost(post._id)">
@@ -61,7 +63,7 @@
     <mat-sidenav-content>
 
         <div *ngIf="showContentPage">
-            {{page.name}}
+            <app-page [page]="page"></app-page>
         </div>
 
         <div *ngIf="showContentPost">

@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
-import { SidebarMainComponent } from './sidebar/sidebar-main/sidebar-main.component';
 import { PostComponent } from './post/post.component';
+import { PageComponent } from './page/page.component';
 
 
 @NgModule({
@@ -19,8 +19,8 @@ import { PostComponent } from './post/post.component';
     AppComponent,
     MainComponent,
     LoginComponent,
-    SidebarMainComponent,
-    PostComponent
+    PostComponent,
+    PageComponent
   ],
   imports: [
     BrowserAnimationsModule,
