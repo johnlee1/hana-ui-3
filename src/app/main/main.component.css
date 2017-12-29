@@ -1,3 +1,8 @@
+mat-list-item {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 mat-sidenav {
     background-color: #fafafa;
     width: 20%;
@@ -15,10 +20,55 @@ mat-sidenav-content {
     background-color: white;
 }
 
-.sidebar-header {
-    font-size: 24px;
-    margin-bottom: 10%;
+#search {
+    border-bottom: 1px solid#C0C0C0;
+    border-top: 1px solid#C0C0C0;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 10%;
+}
+
+#searchDescription {
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+#sidebar-main {
+    margin-top: 5%;
+}
+
+#query {
+    background-color: transparent;
+    border: 0px solid;
+    font-size: 50px;
+    margin-bottom: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 0;
+}
+
+.go-back {
+    border-bottom: 1px solid#C0C0C0;
+}
+
+.sidebar-header {
+    font-size: 24px;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.sidebar-header-2 {
+    font-size: 24px;
+}
+
+.sidebar-item {
+    color: rgba(66, 59, 59, 0.6);
+}
+
+.sidebar-item:hover {
+    background-color: #fafafa;
+    color: black;
 }

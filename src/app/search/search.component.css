@@ -1,0 +1,24 @@
+mat-card {
+    margin-bottom: 5%;
+}
+
+mat-card:hover {
+    cursor: pointer;
+}
+
+#searchDescription {
+    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+#query {
+    background-color: transparent;
+    border: 0px solid;
+    font-size: 50px;
+    margin-bottom: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 0;
+}

@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { PostComponent } from './post/post.component';
 import { PageComponent } from './page/page.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PageComponent } from './page/page.component';
     MainComponent,
     LoginComponent,
     PostComponent,
-    PageComponent
+    PageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserAnimationsModule,

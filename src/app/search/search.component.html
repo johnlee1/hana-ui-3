@@ -1,0 +1,18 @@
+<div id="searchDescription">Search for the people and topics you want to pray for</div>
+<input autofocus type="text" class="form-control" id="query" (keyup)="searchTerm$.next($event.target.value)" [(ngModel)]="query" name="query" placeholder="Start typing...">
+
+<div class="text-sm-center">
+    {{ pages_msg }}
+</div>
+
+<div class="col-md-8 offset-md-2">
+    <div *ngFor="let page of pages">
+        <mat-card (click)="viewPage(page._id)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
+            <div class="pull-right">{{page.posts.length}} posts</div>
+            <h5>{{page.name}}</h5>
+            <div *ngIf="page.followers.length === 1" class="pull-right">{{page.followers.length}} follower</div>
+            <div *ngIf="page.followers.length != 1" class="pull-right">{{page.followers.length}} followers</div>
+            <div>{{page.description}}</div>
+        </mat-card>
+    </div>
+</div>

@@ -9,5 +9,5 @@ import { PostService } from './services/post.service';
   providers: [PageService, PostService]
 })
 export class AppComponent {
-  title = 'app';
+//   title = 'app';
 }

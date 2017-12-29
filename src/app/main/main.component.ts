@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
+// import { Subject } from 'rxjs/Subject';
 import { PageService } from './../services/page.service';
 import { Post } from './../post/post';
 import { PostService } from './../services/post.service';
@@ -24,9 +25,24 @@ export class MainComponent implements OnInit {
 
     showContentPage: boolean;
     showContentPost: boolean;
+    showContentSearch: boolean;
+
+    // search
+    // searchPages;
+    // pages_msg: String;
+    // searchTerm$ = new Subject<string>();
 
     constructor(private pageService: PageService,
-                private postService: PostService) { }
+                private postService: PostService) { 
+        // this.pageService.search(this.searchTerm$)
+        //     .subscribe(pages => {
+        //         this.searchPages = pages;
+        //         this.pages_msg = '';
+        //         if (pages.length < 1) {
+        //             this.pages_msg = 'No pages found.';
+        //         }       
+        //     })
+    }
 
     ngOnInit() {}
 
@@ -36,8 +52,8 @@ export class MainComponent implements OnInit {
     }
 
     getPage(page_id: string) {
-        this.showSidebarPages = false;
         this.showContentPost = false;
+        this.showContentSearch = false;
         this.pageService
             .getPage(page_id)
             .subscribe(res => {
@@ -74,5 +90,11 @@ export class MainComponent implements OnInit {
                 this.post = post;
                 this.showContentPost = true;
             });
+    }
+
+    showSearch() {
+        this.showContentPage = false;
+        this.showContentPost = false;
+        this.showContentSearch = true;
     }
 }

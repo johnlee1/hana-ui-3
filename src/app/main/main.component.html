@@ -3,32 +3,43 @@
     <!-- sidebar -->
     <mat-sidenav mode="side" opened="true">
 
+        <mat-nav-list>
+            <mat-list-item id="search" class="sidebar-item" (click)="showSearch()">
+                Search 
+                &nbsp; 
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </mat-list-item>
+
+            <!-- <div *ngFor="let page of searchPages">
+                <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
+                    {{page.name}}
+                </mat-list-item>
+            </div> -->
+        </mat-nav-list>
+
         <div *ngIf="showSidebarMain">
-            <mat-nav-list>
-                <mat-list-item (click)="getPages()">
-                    <a matLine>Pages</a>
-                </mat-list-item>
-                <mat-list-item>
-                    <a matLine href="...">Lists</a>
-                </mat-list-item>
+            <mat-nav-list id="sidebar-main">
+                <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
+                <mat-list-item class="sidebar-item">Lists</mat-list-item>
+                <mat-list-item class="sidebar-item">My Account</mat-list-item>
             </mat-nav-list>
         </div>
             
         <div *ngIf="showSidebarPages">
             <mat-nav-list>
-                <mat-list-item (click)="getMain()">
-                    <a matLine><i class="fa fa-chevron-left" aria-hidden="true"></i>  Main Menu</a>
+                <mat-list-item class="sidebar-item go-back" (click)="getMain()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    &nbsp; 
+                    Main Menu
                 </mat-list-item>
-                <div class="sidebar-header text-center">
-                    Pages
-                </div>
+                <div class="sidebar-header">Pages</div>
                 <div *ngFor="let page of adminPages">
-                    <mat-list-item (click)="getPage(page._id)">
+                    <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
                         <a matLine>{{page.name}}</a>
                     </mat-list-item>
                 </div>
                 <div *ngFor="let page of memberPages">
-                    <mat-list-item (click)="getPage(page._id)">
+                    <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
                         <a matLine>{{page.name}}</a>
                     </mat-list-item>
                 </div>
@@ -39,28 +50,36 @@
             Lists
         </div>
         
-        <div *ngIf="showSidebarPage">
+        <!-- <div *ngIf="showSidebarPage">
             <mat-nav-list>
-                <mat-list-item (click)="getPages()">
-                    <a matLine><i class="fa fa-chevron-left" aria-hidden="true"></i>  Pages</a>
+                <mat-list-item class="sidebar-item" (click)="getPages()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    &nbsp;
+                    Pages
                 </mat-list-item>
-                <div class="sidebar-header text-center">
-                    <mat-list-item (click)="getContentPage(page._id)">
-                        <a matLine>{{page.name}}</a>
+                <div class="sidebar-header">
+                    <mat-list-item class="sidebar-item sidebar-header-2" (click)="getContentPage(page._id)">
+                        {{page.name}}
                     </mat-list-item>
                 </div>
                 <div *ngFor="let post of posts">
-                    <mat-list-item (click)="getPost(post._id)">
-                        <a matLine>{{post.subject}}</a>
+                    <mat-list-item class="sidebar-item" (click)="getPost(post._id)">
+                        {{post.subject}}
                     </mat-list-item>
                 </div>
             </mat-nav-list>
-        </div>
+        </div> -->
 
     </mat-sidenav>
 
     <!-- content -->
     <mat-sidenav-content>
+
+        <div *ngIf="showContentSearch">
+            <app-search></app-search>
+            <!-- <div id="searchDescription">Search for the people and topics you want to pray for</div>
+            <input autofocus type="text" class="form-control" id="query" (keyup)="searchTerm$.next($event.target.value)" placeholder="Start typing...">                 -->
+        </div>
 
         <div *ngIf="showContentPage">
             <app-page [page]="page"></app-page>

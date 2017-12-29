@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ServiceConfig } from './config/service-config';
 
+// for search
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+
 @Injectable()
 export class PageService {
 
@@ -37,6 +44,12 @@ export class PageService {
     return this.http.get(ServiceConfig.URL + 'pages/me', { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);
+  }
+
+  search(terms: Observable<string>) {
+    return terms.debounceTime(400)
+                .distinctUntilChanged()
+                .switchMap(term => this.searchPages(term));
   }
 
   searchPages(query) {

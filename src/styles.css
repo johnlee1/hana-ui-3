@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+mat-list-item > .mat-list-item-content {
+    padding: 0 !important;
+}
+
+div > .mat-nav-list {
+    padding-top: 0;
+}
+
 .text-center {
     text-align: center;
 }
