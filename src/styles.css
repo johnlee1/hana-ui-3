@@ -12,3 +12,12 @@ div > .mat-nav-list {
 .text-center {
     text-align: center;
 }
+
+.ql-container {
+    font-size: 20px;
+}
+
+.ql-editor {
+    padding-left: 0;
+    padding-right: 0;
+}

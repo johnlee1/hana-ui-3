@@ -32,6 +32,6 @@ export class SearchComponent implements OnInit {
      }
      
     mouseleave (event) {
-    this.renderer2.removeClass(event.target, 'mat-elevation-z5')
+        this.renderer2.removeClass(event.target, 'mat-elevation-z5')
     }
 }

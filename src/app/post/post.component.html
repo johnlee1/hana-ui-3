@@ -1,6 +1,6 @@
 <div class="col-md-8 offset-md-2">
-    <div class="text-center title writing">{{post.subject}}</div>
+    <div class="text-center title writing" [innerHTML]="post.subject"></div>
     <div class="text-center date writing">{{post.create_date | date: 'MM/dd/yy'}}</div>
-    <div class="story writing">{{post.story}}</div>
-    <div class="prayer writing">{{post.prayer}}</div>
+    <div class="story writing" [innerHTML]="post.story"></div>
+    <div class="prayer writing" [innerHTML]="post.prayer"></div>
 </div>

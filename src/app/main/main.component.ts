@@ -23,28 +23,19 @@ export class MainComponent implements OnInit {
     showSidebarPages: boolean;
     showSidebarPost: boolean;
 
+    showContentCreatePage: boolean;
     showContentPage: boolean;
     showContentPost: boolean;
     showContentSearch: boolean;
 
-    // search
-    // searchPages;
-    // pages_msg: String;
-    // searchTerm$ = new Subject<string>();
-
     constructor(private pageService: PageService,
-                private postService: PostService) { 
-        // this.pageService.search(this.searchTerm$)
-        //     .subscribe(pages => {
-        //         this.searchPages = pages;
-        //         this.pages_msg = '';
-        //         if (pages.length < 1) {
-        //             this.pages_msg = 'No pages found.';
-        //         }       
-        //     })
-    }
+                private postService: PostService) {}
 
     ngOnInit() {}
+
+    getCreatePage() {
+        this.showContentCreatePage = true;
+    }
 
     getMain() {
         this.showSidebarMain = true;

@@ -9,19 +9,14 @@
                 &nbsp; 
                 <i class="fa fa-search" aria-hidden="true"></i>
             </mat-list-item>
-
-            <!-- <div *ngFor="let page of searchPages">
-                <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
-                    {{page.name}}
-                </mat-list-item>
-            </div> -->
         </mat-nav-list>
 
         <div *ngIf="showSidebarMain">
             <mat-nav-list id="sidebar-main">
                 <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
-                <mat-list-item class="sidebar-item">Lists</mat-list-item>
-                <mat-list-item class="sidebar-item">My Account</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getQueue()">Queue</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getLists()">Lists</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getAccount()">My Account</mat-list-item>
             </mat-nav-list>
         </div>
             
@@ -32,7 +27,10 @@
                     &nbsp; 
                     Main Menu
                 </mat-list-item>
-                <div class="sidebar-header">Pages</div>
+                <div class="sidebar-header">
+                    Pages
+                    <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="getCreatePage()"></i>
+                </div>
                 <div *ngFor="let page of adminPages">
                     <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
                         <a matLine>{{page.name}}</a>
@@ -49,26 +47,6 @@
         <div *ngIf="lists">
             Lists
         </div>
-        
-        <!-- <div *ngIf="showSidebarPage">
-            <mat-nav-list>
-                <mat-list-item class="sidebar-item" (click)="getPages()">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    &nbsp;
-                    Pages
-                </mat-list-item>
-                <div class="sidebar-header">
-                    <mat-list-item class="sidebar-item sidebar-header-2" (click)="getContentPage(page._id)">
-                        {{page.name}}
-                    </mat-list-item>
-                </div>
-                <div *ngFor="let post of posts">
-                    <mat-list-item class="sidebar-item" (click)="getPost(post._id)">
-                        {{post.subject}}
-                    </mat-list-item>
-                </div>
-            </mat-nav-list>
-        </div> -->
 
     </mat-sidenav>
 
@@ -81,8 +59,12 @@
             <input autofocus type="text" class="form-control" id="query" (keyup)="searchTerm$.next($event.target.value)" placeholder="Start typing...">                 -->
         </div>
 
+        <div *ngIf="showContentCreatePage">
+            <app-create-page></app-create-page>
+        </div>
+
         <div *ngIf="showContentPage">
-            <app-page [page]="page"></app-page>
+            <app-page [currentPage]="page"></app-page>
         </div>
 
         <div *ngIf="showContentPost">

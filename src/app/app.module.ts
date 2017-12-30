@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -13,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { PostComponent } from './post/post.component';
 import { PageComponent } from './page/page.component';
 import { SearchComponent } from './search/search.component';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     PostComponent,
     PageComponent,
-    SearchComponent
+    SearchComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -31,6 +34,7 @@ import { SearchComponent } from './search/search.component';
     HttpModule,
     MaterialModule,
     RoutingModule,
+    QuillModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

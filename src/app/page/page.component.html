@@ -1,7 +1,56 @@
 <div class="col-md-8 offset-md-2">
-    <div class="text-center title">{{page.name}}</div>
-    <div class="text-center description">{{page.description}}</div>
-    <div *ngIf="page.followers.length===1" class="text-center">{{page.followers.length}} follower</div>
-    <div *ngIf="page.followers.length!=1" class="text-center">{{page.followers.length}} followers</div>
+    <div class="title" (click)="returnToPage()">{{page.name}}</div>
+    <div class="description">{{page.description}}</div>
+    <div *ngIf="page.followers.length===1" class="followers">{{page.followers.length}} follower</div>
+    <div *ngIf="page.followers.length!=1" class="followers">{{page.followers.length}} followers</div>
+    <button mat-button class="submit-post-btn" *ngIf="!showCreatePost" (click)="createPost()">Write a Prayer Post</button>
 </div>
-    
+
+<div *ngIf="showPosts" class="col-md-8 offset-md-2">
+    <div *ngFor="let post of page.posts">
+        <mat-card (click)="viewPost(post._id)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
+            <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
+            <h5 [innerHTML]="post.subject"></h5>
+            <div [innerHTML]="post.prayer"></div>
+        </mat-card>
+    </div>
+</div>
+
+<div *ngIf="showPost">
+    <app-post [post]="post"></app-post>
+</div>
+
+<div *ngIf="showCreatePost">
+        <div class="col-md-12">
+            <div class="row">
+                <span class="col-md-2 write-header">subject</span>
+                <quill-editor class="col-md-8"
+                              theme="bubble" 
+                              placeholder="What is the story about?"
+                              [modules]="subjectModules"
+                              [(ngModel)]="newPostSubject"
+                              (onEditorCreated)="setFocus($event)"
+                              (onContentChanged)="subjectContentChanged($event);">
+                </quill-editor>
+            </div>
+            <div class="row">
+                <div class="col-md-2 write-header">the story</div>
+                <quill-editor class="col-md-8"
+                              theme="bubble" 
+                              placeholder="Tell the story..."
+                              [modules]="storyModules"
+                              [(ngModel)]="newPostStory">
+                </quill-editor>
+            </div>
+            <div class="row">
+                <div class="col-md-2 write-header">prayer</div>
+                <quill-editor class="col-md-8"
+                              theme="bubble"
+                              placeholder="Write a prayer or share how to pray..."
+                              [modules]="prayerModules"
+                              [(ngModel)]="newPostPrayer">
+                </quill-editor>
+            </div>
+            <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="submitPost()">Share Your Prayer Post</button>
+        </div>
+    </div>
