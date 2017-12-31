@@ -59,6 +59,13 @@ mat-sidenav-content {
     cursor: pointer;
 }
 
+.fa-spinner {
+    color:  rgba(66, 59, 59, 0.6);
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+
 .go-back {
     border-bottom: 1px solid#C0C0C0;
 }

@@ -18,8 +18,9 @@ export class MainComponent implements OnInit {
     post: Post;
     posts: Post[];
 
+    loading: boolean;
+
     showSidebarMain: boolean = true;
-    showSidebarPage: boolean;
     showSidebarPages: boolean;
     showSidebarPost: boolean;
 
@@ -34,15 +35,17 @@ export class MainComponent implements OnInit {
     ngOnInit() {}
 
     getCreatePage() {
+        this.setAllContentPropertiesToFalse();
         this.showContentCreatePage = true;
     }
 
     getMain() {
-        this.showSidebarMain = true;
         this.showSidebarPages = false;
+        this.showSidebarMain = true;
     }
 
     getPage(page_id: string) {
+        this.setAllContentPropertiesToFalse();
         this.showContentPost = false;
         this.showContentSearch = false;
         this.pageService
@@ -50,23 +53,18 @@ export class MainComponent implements OnInit {
             .subscribe(res => {
                 this.page = res.page;
                 this.posts = res.page.posts;
-                this.showSidebarPage = true;
                 this.showContentPage = true;
 
             });
     }
 
-    getContentPage() {
-        this.showContentPost = false;
-        this.showContentPage = true;
-    }
-
     getPages() {
+        this.loading = true;
         this.showSidebarMain = false;
-        this.showSidebarPage = false;
         this.pageService
             .getPages()
             .subscribe(pages => {
+                this.loading = false;
                 this.adminPages = pages.adminPages;
                 this.memberPages = pages.memberPages;
                 this.showSidebarPages = true;
@@ -87,5 +85,12 @@ export class MainComponent implements OnInit {
         this.showContentPage = false;
         this.showContentPost = false;
         this.showContentSearch = true;
+    }
+
+    setAllContentPropertiesToFalse() {
+        this.showContentCreatePage = false;
+        this.showContentPage = false;
+        this.showContentPost = false;
+        this.showContentSearch = false;
     }
 }

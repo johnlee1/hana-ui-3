@@ -1,0 +1,20 @@
+.row {
+    margin-bottom: 5%;
+}
+
+.submit-post-btn {
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.title {
+    margin-bottom: 5%;
+    margin-top: 7%;
+}
+
+.write-header {
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    justify-content: flex-end;
+}

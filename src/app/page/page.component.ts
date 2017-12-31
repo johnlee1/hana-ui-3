@@ -11,7 +11,7 @@ export class PageComponent implements OnInit {
 
     @Input()
     set currentPage(currentPage: string) {
-        this.setAllToFalse();
+        this.setAllPropertiesToFalse();
         this.showPosts = true;
         this.page = currentPage;
     }
@@ -58,22 +58,18 @@ export class PageComponent implements OnInit {
     ngOnInit() {}
 
     createPost() {
-        this.setAllToFalse();
+        this.setAllPropertiesToFalse();
         this.showCreatePost = true;
     }
 
     returnToPage() {
-        this.setAllToFalse();
+        this.setAllPropertiesToFalse();
         this.showPosts = true;
     }
 
-    setFocus(editor) {
-        editor.focus()
-    }
-
     subjectContentChanged(quill) {
-        if (quill.editor.getLength() >= 280)
-            quill.editor.deleteText(280, quill.editor.getLength())
+        if (quill.editor.getLength() >= 200)
+            quill.editor.deleteText(200, quill.editor.getLength())
     }
 
     submitPost() {
@@ -89,11 +85,10 @@ export class PageComponent implements OnInit {
     }
 
     viewPost(post_id) {
-        this.setAllToFalse();
+        this.setAllPropertiesToFalse();
         this.showPost = true;
         this.post = this.page.posts.find(post => post._id === post_id);
     }
-
 
     // util
 
@@ -105,9 +100,13 @@ export class PageComponent implements OnInit {
         this.renderer2.removeClass(event.target, 'mat-elevation-z5')
     }
 
-    setAllToFalse() {
+    setAllPropertiesToFalse() {
         this.showCreatePost = false;
         this.showPost = false;
         this.showPosts = false;
+    }
+
+    setFocus(editor) {
+        editor.focus()
     }
 }

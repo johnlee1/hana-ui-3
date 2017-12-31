@@ -21,36 +21,38 @@
 </div>
 
 <div *ngIf="showCreatePost">
-        <div class="col-md-12">
-            <div class="row">
-                <span class="col-md-2 write-header">subject</span>
-                <quill-editor class="col-md-8"
-                              theme="bubble" 
-                              placeholder="What is the story about?"
-                              [modules]="subjectModules"
-                              [(ngModel)]="newPostSubject"
-                              (onEditorCreated)="setFocus($event)"
-                              (onContentChanged)="subjectContentChanged($event);">
-                </quill-editor>
-            </div>
-            <div class="row">
-                <div class="col-md-2 write-header">the story</div>
-                <quill-editor class="col-md-8"
-                              theme="bubble" 
-                              placeholder="Tell the story..."
-                              [modules]="storyModules"
-                              [(ngModel)]="newPostStory">
-                </quill-editor>
-            </div>
-            <div class="row">
-                <div class="col-md-2 write-header">prayer</div>
-                <quill-editor class="col-md-8"
-                              theme="bubble"
-                              placeholder="Write a prayer or share how to pray..."
-                              [modules]="prayerModules"
-                              [(ngModel)]="newPostPrayer">
-                </quill-editor>
-            </div>
+    <div class="col-md-12">
+        <div class="row">
+            <span class="col-md-2 write-header">subject</span>
+            <quill-editor class="col-md-8"
+                            theme="bubble" 
+                            placeholder="What is the story about?"
+                            [modules]="subjectModules"
+                            [(ngModel)]="newPostSubject"
+                            (onEditorCreated)="setFocus($event)"
+                            (onContentChanged)="subjectContentChanged($event);">
+            </quill-editor>
+        </div>
+        <div class="row">
+            <div class="col-md-2 write-header">the story</div>
+            <quill-editor class="col-md-8"
+                            theme="bubble" 
+                            placeholder="Tell the story..."
+                            [modules]="storyModules"
+                            [(ngModel)]="newPostStory">
+            </quill-editor>
+        </div>
+        <div class="row">
+            <div class="col-md-2 write-header">prayer</div>
+            <quill-editor class="col-md-8"
+                            theme="bubble"
+                            placeholder="Write a prayer or share how to pray..."
+                            [modules]="prayerModules"
+                            [(ngModel)]="newPostPrayer">
+            </quill-editor>
+        </div>
+        <div class="col-md-10">
             <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="submitPost()">Share Your Prayer Post</button>
         </div>
     </div>
+</div>

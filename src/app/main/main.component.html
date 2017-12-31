@@ -11,6 +11,10 @@
             </mat-list-item>
         </mat-nav-list>
 
+        <div *ngIf="loading">
+            <i class="fa fa-spinner fa-pulse fa-2x"></i>
+        </div>
+
         <div *ngIf="showSidebarMain">
             <mat-nav-list id="sidebar-main">
                 <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
@@ -55,8 +59,6 @@
 
         <div *ngIf="showContentSearch">
             <app-search></app-search>
-            <!-- <div id="searchDescription">Search for the people and topics you want to pray for</div>
-            <input autofocus type="text" class="form-control" id="query" (keyup)="searchTerm$.next($event.target.value)" placeholder="Start typing...">                 -->
         </div>
 
         <div *ngIf="showContentCreatePage">
