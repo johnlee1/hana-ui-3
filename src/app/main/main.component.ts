@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
-// import { Subject } from 'rxjs/Subject';
 import { PageService } from './../services/page.service';
 import { Post } from './../post/post';
 import { PostService } from './../services/post.service';
+import { UserService } from './../services/user.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
 
@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
     page;
     post: Post;
     posts: Post[];
+    queue;
 
     loading: boolean;
 
@@ -27,10 +28,12 @@ export class MainComponent implements OnInit {
     showContentCreatePage: boolean;
     showContentPage: boolean;
     showContentPost: boolean;
+    showContentQueue: boolean;
     showContentSearch: boolean;
 
     constructor(private pageService: PageService,
-                private postService: PostService) {}
+                private postService: PostService,
+                private userService: UserService) {}
 
     ngOnInit() {}
 
@@ -61,24 +64,31 @@ export class MainComponent implements OnInit {
     getPages() {
         this.loading = true;
         this.showSidebarMain = false;
-        this.pageService
-            .getPages()
-            .subscribe(pages => {
-                this.loading = false;
-                this.adminPages = pages.adminPages;
-                this.memberPages = pages.memberPages;
-                this.showSidebarPages = true;
-            });
+        this.pageService.getPages()
+                        .subscribe(pages => {
+                            this.loading = false;
+                            this.adminPages = pages.adminPages;
+                            this.memberPages = pages.memberPages;
+                            this.showSidebarPages = true;
+                        });
     }
 
     getPost(post_id) {
-        this.showContentPage = false;
-        this.postService
-            .getPost(post_id)
-            .subscribe(post => {
-                this.post = post;
-                this.showContentPost = true;
-            });
+        this.setAllContentPropertiesToFalse();
+        this.postService.getPost(post_id)
+                        .subscribe(post => {
+                            this.post = post;
+                            this.showContentPost = true;
+                        });
+    }
+
+    getQueue() {
+        this.setAllContentPropertiesToFalse();
+        this.userService.getQueue()
+                        .subscribe(queue => {
+                            this.queue = queue;
+                            this.showContentQueue = true;
+                        })
     }
 
     showSearch() {
@@ -86,6 +96,8 @@ export class MainComponent implements OnInit {
         this.showContentPost = false;
         this.showContentSearch = true;
     }
+
+    // util
 
     setAllContentPropertiesToFalse() {
         this.showContentCreatePage = false;

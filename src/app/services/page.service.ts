@@ -22,6 +22,7 @@ export class PageService {
 
   createPage(input) {
     const body = JSON.stringify(input);
+    console.log(body);
     return this.http.post(ServiceConfig.URL + 'pages/', body, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);

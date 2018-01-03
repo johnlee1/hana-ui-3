@@ -73,6 +73,10 @@
             <app-post [post]="post"></app-post>
         </div>
 
+        <div *ngIf="showContentQueue">
+            <app-queue [queue]="queue"></app-queue>
+        </div>
+
     </mat-sidenav-content>
 
 </mat-sidenav-container>

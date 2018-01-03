@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 mat-list-item > .mat-list-item-content {
@@ -7,6 +8,14 @@ mat-list-item > .mat-list-item-content {
 
 div > .mat-nav-list {
     padding-top: 0;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #81A4CD;
+}
+
+.mat-chip:not(.mat-basic-chip) {
+    padding: 2px 7px !important;
 }
 
 .text-center {

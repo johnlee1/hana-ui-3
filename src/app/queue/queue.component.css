@@ -10,17 +10,8 @@ mat-card:hover {
     margin-bottom: 3%;
 }
 
-.followers {
-    margin-bottom: 5%;
-}
-
 .row {
     margin-bottom: 5%;
-}
-
-.submit-post-btn {
-    margin-bottom: 1%;
-    margin-top: 1%;
 }
 
 .title {
@@ -31,11 +22,4 @@ mat-card:hover {
 .title:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-.write-header {
-    align-items: center;
-    display: flex;
-    font-size: 18px;
-    justify-content: flex-end;
 }

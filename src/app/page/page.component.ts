@@ -5,7 +5,7 @@ import { PostService } from './../services/post.service';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css']
+  styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
 
@@ -53,6 +53,14 @@ export class PageComponent implements OnInit {
         ]
     };
 
+    // new prayer post
+    resolved: boolean = false;;
+    resolution = " ";
+    urgent: boolean;
+
+    // util
+    toolTipPos: string = 'right';
+
     constructor(private renderer2: Renderer2, private postService: PostService) { }
 
     ngOnInit() {}
@@ -77,7 +85,10 @@ export class PageComponent implements OnInit {
         newPost["id"] = this.page._id;
         newPost["subject"] = this.newPostSubject;
         newPost["story"] = this.newPostStory;
-        newPost["prayer"] = this.newPostPrayer
+        newPost["prayer"] = this.newPostPrayer;
+        newPost["resolved"] = this.resolved;
+        newPost["resolution"] = this.resolution;
+        newPost["urgent"] = this.urgent;
         this.postService.createPost(newPost)
                         .subscribe(res => {
                             console.log(res);
@@ -90,7 +101,7 @@ export class PageComponent implements OnInit {
         this.post = this.page.posts.find(post => post._id === post_id);
     }
 
-    // util
+    // utils
 
     mouseenter(event) {
         this.renderer2.addClass(event.target, 'mat-elevation-z5')
@@ -108,5 +119,10 @@ export class PageComponent implements OnInit {
 
     setFocus(editor) {
         editor.focus()
+    }
+
+    toggle(event) {
+        console.log(event.target);
+        event.target.checked = !event.target.checked;
     }
 }

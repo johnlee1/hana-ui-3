@@ -8,10 +8,19 @@
 
 <div *ngIf="showPosts" class="col-md-8 offset-md-2">
     <div *ngFor="let post of page.posts">
-        <mat-card (click)="viewPost(post._id)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
+        <mat-card (click)="viewPost(post._id)" 
+                    (mouseenter)='mouseenter($event)' 
+                    (mouseleave)="mouseleave($event)"
+                    [ngClass]="{'card-urgent': post.urgent, 'card-resolved': post.resolved}">
             <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
-            <h5 [innerHTML]="post.subject"></h5>
-            <div [innerHTML]="post.prayer"></div>
+            <div class="subject" [innerHTML]="post.subject"></div> 
+            <div class="prayer" [innerHTML]="post.prayer"></div>
+            <!-- <div *ngIf="post.urgent || post.resolved" class="chips">
+                <mat-chip-list>
+                    <mat-chip *ngIf="post.urgent" class="chip-urgent">Urgent</mat-chip>
+                    <mat-chip *ngIf="post.resolved" class="chip-resolved">Resolved</mat-chip>
+                </mat-chip-list>
+            </div> -->
         </mat-card>
     </div>
 </div>
@@ -22,7 +31,7 @@
 
 <div *ngIf="showCreatePost">
     <div class="col-md-12">
-        <div class="row">
+        <div class="row mainFormElement">
             <span class="col-md-2 write-header">subject</span>
             <quill-editor class="col-md-8"
                             theme="bubble" 
@@ -33,7 +42,7 @@
                             (onContentChanged)="subjectContentChanged($event);">
             </quill-editor>
         </div>
-        <div class="row">
+        <div class="row mainFormElement">
             <div class="col-md-2 write-header">the story</div>
             <quill-editor class="col-md-8"
                             theme="bubble" 
@@ -42,7 +51,7 @@
                             [(ngModel)]="newPostStory">
             </quill-editor>
         </div>
-        <div class="row">
+        <div class="row mainFormElement">
             <div class="col-md-2 write-header">prayer</div>
             <quill-editor class="col-md-8"
                             theme="bubble"
@@ -51,6 +60,21 @@
                             [(ngModel)]="newPostPrayer">
             </quill-editor>
         </div>
+        <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
+            <mat-checkbox [(ngModel)]="urgent" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
+        </div>
+        <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
+            <mat-checkbox [(ngModel)]="resolved" matTooltip="resolved prayer request" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
+        </div>
+        <div *ngIf="resolved" class="row mainFormElement">
+                <div class="col-md-2 write-header">resolution</div>
+                <quill-editor class="col-md-8"
+                                theme="bubble"
+                                placeholder="Share what happened..."
+                                [modules]="prayerModules"
+                                [(ngModel)]="resolution">
+                </quill-editor>
+            </div>
         <div class="col-md-10">
             <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="submitPost()">Share Your Prayer Post</button>
         </div>
