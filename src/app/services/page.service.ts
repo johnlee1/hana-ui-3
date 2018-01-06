@@ -22,7 +22,6 @@ export class PageService {
 
   createPage(input) {
     const body = JSON.stringify(input);
-    console.log(body);
     return this.http.post(ServiceConfig.URL + 'pages/', body, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);
@@ -47,6 +46,13 @@ export class PageService {
                     .catch(ServiceConfig.handleError);
   }
 
+  refreshCode(page_id) {
+      const body = JSON.stringify({});
+      return this.http.put(ServiceConfig.URL + 'pages/refresh_code' + page_id, body, { headers: ServiceConfig.createHeader() })
+                 .map(ServiceConfig.extractData)
+                 .catch(ServiceConfig.handleError);
+  }
+
   search(terms: Observable<string>) {
     return terms.debounceTime(400)
                 .distinctUntilChanged()
@@ -56,6 +62,13 @@ export class PageService {
   searchPages(query) {
     const queryString = `?q=${query}`;
     return this.http.get(ServiceConfig.URL + 'pages/search' + queryString, { headers: ServiceConfig.createHeader() })
+                    .map(ServiceConfig.extractData)
+                    .catch(ServiceConfig.handleError);
+  }
+
+  searchCode(query) {
+    const queryString = `?q=${query}`;
+    return this.http.get(ServiceConfig.URL + 'pages/search/code' + queryString, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);
   }

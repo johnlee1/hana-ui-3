@@ -34,6 +34,7 @@
                 <div class="sidebar-header">
                     Pages
                     <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="getCreatePage()"></i>
+                    <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="getEnterPageCode()"></i>
                 </div>
                 <div *ngFor="let page of adminPages">
                     <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
@@ -63,6 +64,10 @@
 
         <div *ngIf="showContentCreatePage">
             <app-create-page></app-create-page>
+        </div>
+
+        <div *ngIf="showContentEnterPageCode">
+            <app-page-code></app-page-code>
         </div>
 
         <div *ngIf="showContentPage">

@@ -16,6 +16,7 @@ import { PageComponent } from './page/page.component';
 import { SearchComponent } from './search/search.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { QueueComponent } from './queue/queue.component';
+import { PageCodeComponent } from './page-code/page-code.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { QueueComponent } from './queue/queue.component';
     PageComponent,
     SearchComponent,
     CreatePageComponent,
-    QueueComponent
+    QueueComponent,
+    PageCodeComponent
   ],
   imports: [
     BrowserAnimationsModule,

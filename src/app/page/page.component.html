@@ -11,7 +11,7 @@
         <mat-card (click)="viewPost(post._id)" 
                     (mouseenter)='mouseenter($event)' 
                     (mouseleave)="mouseleave($event)"
-                    [ngClass]="{'card-urgent': post.urgent, 'card-resolved': post.resolved}">
+                    [ngClass]="{'card-urgent': post.urgent}">
             <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
             <div class="subject" [innerHTML]="post.subject"></div> 
             <div class="prayer" [innerHTML]="post.prayer"></div>

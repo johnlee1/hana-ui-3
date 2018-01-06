@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
     showSidebarPost: boolean;
 
     showContentCreatePage: boolean;
+    showContentEnterPageCode: boolean;
     showContentPage: boolean;
     showContentPost: boolean;
     showContentQueue: boolean;
@@ -40,6 +41,11 @@ export class MainComponent implements OnInit {
     getCreatePage() {
         this.setAllContentPropertiesToFalse();
         this.showContentCreatePage = true;
+    }
+
+    getEnterPageCode() {
+        this.setAllContentPropertiesToFalse();
+        this.showContentEnterPageCode = true;
     }
 
     getMain() {
@@ -101,8 +107,10 @@ export class MainComponent implements OnInit {
 
     setAllContentPropertiesToFalse() {
         this.showContentCreatePage = false;
+        this.showContentEnterPageCode = false;
         this.showContentPage = false;
         this.showContentPost = false;
+        this.showContentQueue = false;
         this.showContentSearch = false;
     }
 }
