@@ -1,10 +1,12 @@
 export class Post {
-    create_date: string;
     _id: string;
+    create_date: string;
     prayer: string;
-    visibility: string;
-    urgent: boolean;
+    resolution: string;
+    resolved: boolean;
     story: string;
     subject: string;
-  }
+    urgent: boolean;
+    visibility: string;
+}
   

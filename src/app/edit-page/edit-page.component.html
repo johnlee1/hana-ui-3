@@ -1,12 +1,10 @@
-<h2 class="offset-md-2 col-md-8 title">create a new page</h2>
-
 <div class="row">
     <span class="col-md-2 write-header">name</span>
     <quill-editor class="col-md-8"
                     theme="bubble" 
                     placeholder="what will this page be called?"
-                    [modules]="quillModule"
-                    [(ngModel)]="newPageName"
+                    [modules]="nameModules"
+                    [(ngModel)]="name"
                     (onEditorCreated)="setFocus($event)"
                     (onContentChanged)="nameContentChanged($event);">
     </quill-editor>
@@ -16,11 +14,22 @@
     <quill-editor class="col-md-8"
                     theme="bubble" 
                     placeholder="what is this page about?"
-                    [modules]="quillModule"
-                    [(ngModel)]="newPageDescription"
+                    [modules]="descriptionModules"
+                    [(ngModel)]="description"
                     (onContentChanged)="descriptionContentChanged($event);">
     </quill-editor>
 </div>
+<div class="row">
+    Page Code: {{page_code}}
+    <button (click)="refreshCode()">Refresh Page Code</button>
+</div>
+<div class="row">
+    Current Admins
+    Current Contributors
+</div>
+<div class="row">
+    Requestors
+</div>
 <div class="col-md-10">
-    <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="createPage()">Create Page</button>
+    <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="createPage()">Update Page</button>
 </div>

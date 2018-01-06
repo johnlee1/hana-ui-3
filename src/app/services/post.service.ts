@@ -27,7 +27,6 @@ export class PostService {
 
   createPost(input) {
     const body = JSON.stringify(input);
-    console.log(body);
     return this.http.post(ServiceConfig.URL + 'posts', body, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);

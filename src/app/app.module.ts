@@ -17,6 +17,10 @@ import { SearchComponent } from './search/search.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { QueueComponent } from './queue/queue.component';
 import { PageCodeComponent } from './page-code/page-code.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { AccountComponent } from './account/account.component';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { PageCodeComponent } from './page-code/page-code.component';
     SearchComponent,
     CreatePageComponent,
     QueueComponent,
-    PageCodeComponent
+    PageCodeComponent,
+    EditPageComponent,
+    CreatePostComponent,
+    AccountComponent,
+    LandingComponent
   ],
   imports: [
     BrowserAnimationsModule,

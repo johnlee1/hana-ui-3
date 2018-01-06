@@ -1,7 +1,18 @@
-<p>
-  page-code works!
-</p>
+<div class="col-md-4 offset-md-4 text-center">
+    <div>Enter Page Code</div>
+    <input autofocus type="text" class="form-control" [(ngModel)]="pageCode">
+    <button mat-raised-button (click)="enterPageCode()">Search for Page</button>
 
-Enter Page Code
-<input autofocus type="text" class="form-control" [(ngModel)]="pageCode">
-<button (click)="enterPageCode()"></button>
+    <div *ngIf="page">
+        <mat-card>
+            <div class="subject" [innerHTML]="page.name"></div> 
+            <div class="prayer" [innerHTML]="page.description"></div>
+        </mat-card>
+        <button mat-raised-button>request to be an admin</button>
+        <button mat-raised-button> request to be a contributor</button>
+    </div>
+
+    <div *ngIf="!page">
+       Page not found.
+    </div>
+</div>

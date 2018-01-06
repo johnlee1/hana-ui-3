@@ -2,6 +2,10 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+$grey-light-color: #676767;
+
+$font-size-s: 18px;
+
 mat-list-item > .mat-list-item-content {
     padding: 0 !important;
 }
@@ -10,12 +14,20 @@ div > .mat-nav-list {
     padding-top: 0;
 }
 
+.fa-bars:hover {
+    cursor: pointer;
+}
+
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
     background-color: #81A4CD;
 }
 
 .mat-chip:not(.mat-basic-chip) {
     padding: 2px 7px !important;
+}
+
+.pointer {
+    cursor: pointer
 }
 
 .text-center {

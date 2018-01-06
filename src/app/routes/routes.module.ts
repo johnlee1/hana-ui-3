@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { LandingComponent } from './../landing/landing.component';
+import { LoginComponent } from './../login/login.component';
 import { MainComponent } from './../main/main.component';
 
 // import { AuthRoutes } from './../components/auth/auth.routes';
@@ -13,7 +16,9 @@ import { MainComponent } from './../main/main.component';
 // import { SettingsRoutes } from './../components/settings/settings.routes';
 
 const appRoutes: Routes = [
-  { path: '', component: MainComponent },
+    { path: '', component: LandingComponent },
+    { path: 'signup', component: LoginComponent },
+//   { path: '', component: MainComponent },
 //   ...AuthRoutes,
 //   ...CircleRoutes,
 //   ...DonateRoutes,

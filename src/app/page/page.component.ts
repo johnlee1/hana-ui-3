@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { Page } from './../page/page';
 import { Post } from './../post/post';
 import { PostService } from './../services/post.service';
+import { PageService } from './../services/page.service';
 
 @Component({
   selector: 'app-page',
@@ -9,8 +11,10 @@ import { PostService } from './../services/post.service';
 })
 export class PageComponent implements OnInit {
 
+    @Input() level: string;
+
     @Input()
-    set currentPage(currentPage: string) {
+    set currentPage(currentPage: Page) {
         this.setAllPropertiesToFalse();
         this.showPosts = true;
         this.page = currentPage;
@@ -19,55 +23,34 @@ export class PageComponent implements OnInit {
     page;
     post: Post;
     showCreatePost: boolean;
+    showEditPage: boolean;
     showPost: boolean;
     showPosts: boolean = true;;
-
-    // quill
-    emptyArray: any[] = [];
-    newPostSubject;
-    newPostStory;
-    newPostPrayer;
-    subjectModules = {
-        toolbar: [
-            ['italic', 'strike'],        // toggled buttons
-        ]
-    };
-    storyModules = {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote'],
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': this.emptyArray.slice() }],
-            ['clean'],                                        // remove formatting button
-            ['link', 'image']                                 // link and image, video
-        ]
-    };
-    prayerModules = {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': this.emptyArray.slice() }],
-            ['clean'],                                        // remove formatting button
-        ]
-    };
-
-    // new prayer post
-    resolved: boolean = false;;
-    resolution = " ";
-    urgent: boolean;
 
     // util
     toolTipPos: string = 'right';
 
-    constructor(private renderer2: Renderer2, private postService: PostService) { }
+    constructor(private renderer2: Renderer2, private pageService: PageService,
+                                              private postService: PostService) { }
 
     ngOnInit() {}
 
     createPost() {
         this.setAllPropertiesToFalse();
         this.showCreatePost = true;
+    }
+
+    editPage() {
+        this.setAllPropertiesToFalse();
+        this.showEditPage = true;
+    }
+
+    getPage() {
+        this.pageService.getPage(this.page._id)
+                        .subscribe(res => {
+                            this.page = res.page;
+                            this.level = res.level;
+                        })
     }
 
     returnToPage() {
@@ -80,20 +63,22 @@ export class PageComponent implements OnInit {
             quill.editor.deleteText(200, quill.editor.getLength())
     }
 
-    submitPost() {
-        let newPost = {};
-        newPost["id"] = this.page._id;
-        newPost["subject"] = this.newPostSubject;
-        newPost["story"] = this.newPostStory;
-        newPost["prayer"] = this.newPostPrayer;
-        newPost["resolved"] = this.resolved;
-        newPost["resolution"] = this.resolution;
-        newPost["urgent"] = this.urgent;
-        this.postService.createPost(newPost)
-                        .subscribe(res => {
-                            console.log(res);
-                        });
-    }
+    // submitPost() {
+    //     let newPost = {};
+    //     newPost["id"] = this.page._id;
+    //     newPost["subject"] = this.newPostSubject;
+    //     newPost["story"] = this.newPostStory;
+    //     newPost["prayer"] = this.newPostPrayer;
+    //     newPost["resolved"] = this.resolved;
+    //     newPost["resolution"] = this.resolution;
+    //     newPost["urgent"] = this.urgent;
+    //     this.postService.createPost(newPost)
+    //                     .subscribe(res => {
+    //                         this.setAllPropertiesToFalse();
+    //                         this.getPage();
+    //                         this.showPosts = true;
+    //                     });
+    // }
 
     viewPost(post_id) {
         this.setAllPropertiesToFalse();
@@ -122,7 +107,6 @@ export class PageComponent implements OnInit {
     }
 
     toggle(event) {
-        console.log(event.target);
         event.target.checked = !event.target.checked;
     }
 }

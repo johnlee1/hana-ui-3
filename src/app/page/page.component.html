@@ -4,13 +4,13 @@
     <div *ngIf="page.followers.length===1" class="followers">{{page.followers.length}} follower</div>
     <div *ngIf="page.followers.length!=1" class="followers">{{page.followers.length}} followers</div>
     <button mat-button class="submit-post-btn" *ngIf="!showCreatePost" (click)="createPost()">Write a Prayer Post</button>
+    <button *ngIf="level==='admin'" mat-button class="submit-post-btn" (click)="editPage()">Edit Page</button>
 </div>
 
 <div *ngIf="showPosts" class="col-md-8 offset-md-2">
     <div *ngFor="let post of page.posts">
         <mat-card (click)="viewPost(post._id)" 
-                    (mouseenter)='mouseenter($event)' 
-                    (mouseleave)="mouseleave($event)"
+                    (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)"
                     [ngClass]="{'card-urgent': post.urgent}">
             <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
             <div class="subject" [innerHTML]="post.subject"></div> 
@@ -25,58 +25,14 @@
     </div>
 </div>
 
+<div *ngIf="showEditPage">
+    <app-edit-page [editPage]="page"></app-edit-page>
+</div>
+
 <div *ngIf="showPost">
     <app-post [post]="post"></app-post>
 </div>
 
 <div *ngIf="showCreatePost">
-    <div class="col-md-12">
-        <div class="row mainFormElement">
-            <span class="col-md-2 write-header">subject</span>
-            <quill-editor class="col-md-8"
-                            theme="bubble" 
-                            placeholder="What is the story about?"
-                            [modules]="subjectModules"
-                            [(ngModel)]="newPostSubject"
-                            (onEditorCreated)="setFocus($event)"
-                            (onContentChanged)="subjectContentChanged($event);">
-            </quill-editor>
-        </div>
-        <div class="row mainFormElement">
-            <div class="col-md-2 write-header">the story</div>
-            <quill-editor class="col-md-8"
-                            theme="bubble" 
-                            placeholder="Tell the story..."
-                            [modules]="storyModules"
-                            [(ngModel)]="newPostStory">
-            </quill-editor>
-        </div>
-        <div class="row mainFormElement">
-            <div class="col-md-2 write-header">prayer</div>
-            <quill-editor class="col-md-8"
-                            theme="bubble"
-                            placeholder="Write a prayer or share how to pray..."
-                            [modules]="prayerModules"
-                            [(ngModel)]="newPostPrayer">
-            </quill-editor>
-        </div>
-        <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
-            <mat-checkbox [(ngModel)]="urgent" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
-        </div>
-        <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
-            <mat-checkbox [(ngModel)]="resolved" matTooltip="resolved prayer request" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
-        </div>
-        <div *ngIf="resolved" class="row mainFormElement">
-                <div class="col-md-2 write-header">resolution</div>
-                <quill-editor class="col-md-8"
-                                theme="bubble"
-                                placeholder="Share what happened..."
-                                [modules]="prayerModules"
-                                [(ngModel)]="resolution">
-                </quill-editor>
-            </div>
-        <div class="col-md-10">
-            <button mat-raised-button class="pull-right submit-post-btn" color="primary" (click)="submitPost()">Share Your Prayer Post</button>
-        </div>
-    </div>
+    <app-create-post [pageId]="page._id"></app-create-post>
 </div>

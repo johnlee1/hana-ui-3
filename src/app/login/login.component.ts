@@ -26,11 +26,10 @@ export class LoginComponent implements OnInit {
       this.authService
           .login(input)
           .subscribe(res => {
-            if (res.token) {
-              this.router.navigate(['/main', localStorage.getItem('hanauserid')]);
-            } else {
-              this.error = res.error;
-            }
+            if (res.token)
+                this.router.navigate(['/main', localStorage.getItem('hanauserid')]);
+            else
+                this.error = res.error;
           });
     }
 

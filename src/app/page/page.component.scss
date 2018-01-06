@@ -14,10 +14,6 @@ mat-card:hover {
     border-right: 5px solid #D62246;
 }
 
-.checkbox {
-    padding-left: 0;
-}
-
 .chip-resolved {
     background-color: green;
     color: white;
@@ -40,21 +36,8 @@ mat-card:hover {
     margin-bottom: 5%;
 }
 
-.mainFormElement {
-    margin-bottom: 5%;
-}
-
-.minorFormElement {
-    margin-bottom: 1%;
-}
-
 .subject {
     font-size: 24px;
-}
-
-.submit-post-btn {
-    margin-bottom: 1%;
-    margin-top: 1%;
 }
 
 .title {
@@ -65,11 +48,4 @@ mat-card:hover {
 .title:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-.write-header {
-    align-items: center;
-    display: flex;
-    font-size: 18px;
-    justify-content: flex-end;
 }

@@ -9,7 +9,7 @@ import { PageService } from './../services/page.service';
 export class PageCodeComponent implements OnInit {
 
     pageCode: string;
-    result;
+    page;
 
     constructor(private pageService: PageService) {}
 
@@ -18,7 +18,8 @@ export class PageCodeComponent implements OnInit {
     enterPageCode() {
         this.pageService.searchCode(this.pageCode)
                         .subscribe(res => {
-                            this.result = res;
+                            this.page = res.page;
+                            console.log(this.page);
                         });
     }
 

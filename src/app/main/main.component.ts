@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material';
+import { Page } from './../page/page';
 import { PageService } from './../services/page.service';
 import { Post } from './../post/post';
 import { PostService } from './../services/post.service';
@@ -13,30 +14,39 @@ import { UserService } from './../services/user.service';
 export class MainComponent implements OnInit {
 
     adminPages;
+    level: string; // page level
     memberPages;
-    page;
+    page: Page;
     post: Post;
-    posts: Post[];
     queue;
 
     loading: boolean;
 
+    showSidebar: boolean = true;
     showSidebarMain: boolean = true;
     showSidebarPages: boolean;
     showSidebarPost: boolean;
 
+    showContentAccount: boolean;
     showContentCreatePage: boolean;
     showContentEnterPageCode: boolean;
     showContentPage: boolean;
     showContentPost: boolean;
-    showContentQueue: boolean;
+    showContentQueue: boolean = true;
     showContentSearch: boolean;
 
     constructor(private pageService: PageService,
                 private postService: PostService,
                 private userService: UserService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.getQueue();
+    }
+
+    getAccount() {
+        this.setAllContentPropertiesToFalse();
+        this.showContentAccount = true;
+    }
 
     getCreatePage() {
         this.setAllContentPropertiesToFalse();
@@ -55,16 +65,12 @@ export class MainComponent implements OnInit {
 
     getPage(page_id: string) {
         this.setAllContentPropertiesToFalse();
-        this.showContentPost = false;
-        this.showContentSearch = false;
-        this.pageService
-            .getPage(page_id)
-            .subscribe(res => {
-                this.page = res.page;
-                this.posts = res.page.posts;
-                this.showContentPage = true;
-
-            });
+        this.pageService.getPage(page_id)
+                        .subscribe(res => {
+                            this.page = res.page;
+                            this.level = res.level;
+                            this.showContentPage = true;
+                        });
     }
 
     getPages() {
@@ -97,15 +103,26 @@ export class MainComponent implements OnInit {
                         })
     }
 
+    pageCreated(page: Page) {
+        this.setAllContentPropertiesToFalse();
+        this.page = page;
+        this.level = 'admin';
+        this.showContentPage = true; 
+    }
+
     showSearch() {
-        this.showContentPage = false;
-        this.showContentPost = false;
+        this.setAllContentPropertiesToFalse()
         this.showContentSearch = true;
+    }
+
+    toggleSidebar() {
+
     }
 
     // util
 
     setAllContentPropertiesToFalse() {
+        this.showContentAccount = false;
         this.showContentCreatePage = false;
         this.showContentEnterPageCode = false;
         this.showContentPage = false;

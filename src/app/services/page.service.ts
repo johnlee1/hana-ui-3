@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class PageService {
@@ -48,7 +49,7 @@ export class PageService {
 
   refreshCode(page_id) {
       const body = JSON.stringify({});
-      return this.http.put(ServiceConfig.URL + 'pages/refresh_code' + page_id, body, { headers: ServiceConfig.createHeader() })
+      return this.http.put(ServiceConfig.URL + 'pages/refresh_code/' + page_id, body, { headers: ServiceConfig.createHeader() })
                  .map(ServiceConfig.extractData)
                  .catch(ServiceConfig.handleError);
   }
@@ -56,7 +57,7 @@ export class PageService {
   search(terms: Observable<string>) {
     return terms.debounceTime(400)
                 .distinctUntilChanged()
-                .switchMap(term => this.searchPages(term));
+                .switchMap(terms => terms.length > 0 ? this.searchPages(terms) : Observable.of([]));
   }
 
   searchPages(query) {

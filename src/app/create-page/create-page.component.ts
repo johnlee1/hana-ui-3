@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PageService } from './../services/page.service';
+import { Page } from './../page/page';
 
 @Component({
   selector: 'app-create-page',
@@ -8,18 +9,13 @@ import { PageService } from './../services/page.service';
 })
 export class CreatePageComponent implements OnInit {
 
+    @Output() pageCreated = new EventEmitter<Page>();
+
     newPageDescription;
     newPageName;
 
-    nameModules = {
-        toolbar: [
-            ['italic', 'strike'],
-        ]
-    };
-    descriptionModules = {
-        toolbar: [
-            ['bold', 'italic', 'strike'],
-        ]
+    quillModule = {
+        toolbar: false
     };
 
     constructor(private pageService: PageService) {}
@@ -28,13 +24,13 @@ export class CreatePageComponent implements OnInit {
 
     createPage() {
         let newPage = {};
-        newPage["name"] = this.newPageName;
-        newPage["description"] = this.newPageDescription;
+        newPage["name"] = this.newPageName.substr(0, this.newPageName.length-4).substr(3); // maybe theres a better way than doing this?
+        newPage["description"] = this.newPageDescription.substr(0, this.newPageName.length-4).substr(3);
         this.pageService
             .createPage(newPage)
             .subscribe(page => {
-                console.log(page);
-                // this.router.navigate(['/page', page._id]);
+                console.log(page.name);
+                this.pageCreated.emit(page);
             });
     }
 
