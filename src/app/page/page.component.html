@@ -3,8 +3,10 @@
     <div class="description">{{page.description}}</div>
     <div *ngIf="page.followers.length===1" class="followers">{{page.followers.length}} follower</div>
     <div *ngIf="page.followers.length!=1" class="followers">{{page.followers.length}} followers</div>
-    <button mat-button class="submit-post-btn" *ngIf="!showCreatePost" (click)="createPost()">Write a Prayer Post</button>
-    <button *ngIf="level==='admin'" mat-button class="submit-post-btn" (click)="editPage()">Edit Page</button>
+    <div class="btns">
+        <button class="btn btn-secondary btn-sm submit-post-btn pointer" *ngIf="!showCreatePost" (click)="createPost()">Write a Prayer Post</button>
+        <button *ngIf="level==='admin'" class="btn btn-secondary btn-sm submit-post-btn pointer" (click)="editPage()">Edit Page</button>
+    </div>
 </div>
 
 <div *ngIf="showPosts" class="col-md-8 offset-md-2">

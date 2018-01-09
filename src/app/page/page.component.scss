@@ -6,6 +6,10 @@ mat-card:hover {
     cursor: pointer;
 }
 
+.btns {
+    margin-bottom: 10%;
+}
+
 // .card-resolved {
 //     border-right: 3px solid #00A676;
 // }
@@ -29,11 +33,12 @@ mat-card:hover {
 }
 
 .description {
+    font-weight: 300;
     margin-bottom: 3%;
 }
 
 .followers {
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 .subject {
@@ -42,7 +47,7 @@ mat-card:hover {
 
 .title {
     font-size: 24px;
-    margin-top: 7%;
+    margin-top: 2%;
 }
 
 .title:hover {

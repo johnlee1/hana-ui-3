@@ -21,6 +21,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { AccountComponent } from './account/account.component';
 import { LandingComponent } from './landing/landing.component';
+import { SignupComponent } from './signup/signup.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { LandingComponent } from './landing/landing.component';
     EditPageComponent,
     CreatePostComponent,
     AccountComponent,
-    LandingComponent
+    LandingComponent,
+    SignupComponent,
+    AboutComponent
   ],
   imports: [
     BrowserAnimationsModule,

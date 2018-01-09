@@ -1,0 +1,50 @@
+@import "./../../styles.scss";
+
+.col-md-4 {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.description {
+    margin-bottom: 4%;
+    color: $grey-light-color;
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+.footer {
+    margin-top: 5%;
+    font-weight: 300;
+    font-style: normal;
+    padding-left: 10px; 
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.footer:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main {
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+}
+
+.name {
+    margin-bottom: 1%;
+    font-weight: 400;
+    font-size: 4rem;
+}
+
+.whole {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

@@ -1,14 +1,14 @@
 @import "./../../styles.scss";
 
-#color_overlay {
-    background-color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-}
+// #color_overlay {
+//     background-color: white;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     opacity: 0.8;
+// }
 
 .enter {
     margin-top: 5%;
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 20%;
+    padding-left: 15%;
     position: absolute;
     width: 100%;
 }
@@ -40,7 +40,7 @@
 
 .whole {
     background-color: white;
-    background-image: url("./background2.jpg");
+    // background-image: url("./background2.jpg");
     height: 100vh;
     width: 100vw;
     -webkit-background-size: cover;

@@ -1,15 +1,19 @@
 <div class="col-md-8 offset-md-2">
     <div class="title" (click)="returnToQueue()">Queue</div>
-    <div class="description">Your queue is the entire collection of prayer posts from all of the pages you follow.</div>
+    <div class="description">a list of prayer posts from all of the pages you follow</div>
 </div>
 
 
-<div *ngIf="true" class="col-md-8 offset-md-2">
+<div *ngIf="!showPost" class="col-md-8 offset-md-2">
     <div *ngFor="let post of queue">
-        <mat-card (click)="viewPost(post._id)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
+        <mat-card (click)="viewPost(post)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
             <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
             <h5 [innerHTML]="post.subject"></h5>
             <div [innerHTML]="post.prayer"></div>
         </mat-card>
     </div>
+</div>
+
+<div *ngIf="showPost">
+    <app-post [post]="post"></app-post>
 </div>

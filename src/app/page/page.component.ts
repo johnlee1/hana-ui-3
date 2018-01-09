@@ -63,23 +63,6 @@ export class PageComponent implements OnInit {
             quill.editor.deleteText(200, quill.editor.getLength())
     }
 
-    // submitPost() {
-    //     let newPost = {};
-    //     newPost["id"] = this.page._id;
-    //     newPost["subject"] = this.newPostSubject;
-    //     newPost["story"] = this.newPostStory;
-    //     newPost["prayer"] = this.newPostPrayer;
-    //     newPost["resolved"] = this.resolved;
-    //     newPost["resolution"] = this.resolution;
-    //     newPost["urgent"] = this.urgent;
-    //     this.postService.createPost(newPost)
-    //                     .subscribe(res => {
-    //                         this.setAllPropertiesToFalse();
-    //                         this.getPage();
-    //                         this.showPosts = true;
-    //                     });
-    // }
-
     viewPost(post_id) {
         this.setAllPropertiesToFalse();
         this.showPost = true;

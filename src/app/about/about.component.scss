@@ -1,0 +1,46 @@
+@import "./../../styles.scss";
+
+.link {
+    font-weight: 300;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.links {
+    position: absolute;
+    right: 45px;
+    top: 30px;
+}
+
+.about {
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.body {
+    margin-bottom: 5%;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.header {
+    text-decoration: underline;
+}
+
+.title {
+    font-size: 2rem;
+    margin-top: 7%;
+    margin-bottom: 2%;
+    display: inline-block;
+    padding-bottom: 1px;
+    border-bottom: 2px solid $blue-color;
+}
