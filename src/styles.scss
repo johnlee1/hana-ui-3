@@ -15,6 +15,16 @@ div > .mat-nav-list {
     padding-top: 0;
 }
 
+.custom-btn {
+    border-color: black;
+    color: black;
+}
+
+.custom-btn:hover {
+    border-color: black;
+    color: black;
+}
+
 .fa-bars:hover {
     cursor: pointer;
 }
@@ -25,6 +35,10 @@ div > .mat-nav-list {
 
 .mat-chip:not(.mat-basic-chip) {
     padding: 2px 7px !important;
+}
+
+.mat-form-field-infix {
+    width: 120px !important;
 }
 
 .pointer {

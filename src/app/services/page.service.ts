@@ -86,4 +86,10 @@ export class PageService {
                     .catch(ServiceConfig.handleError);
   }
 
+  joinPage(page_id, page_code) {
+    return this.http.put(ServiceConfig.URL + 'pages/join/' + page_id + '/' + page_code, '', { headers: ServiceConfig.createHeader() })
+                    .map(ServiceConfig.extractData)
+                    .catch(ServiceConfig.handleError);
+  }
+
 }

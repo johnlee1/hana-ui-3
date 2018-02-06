@@ -23,6 +23,7 @@ import { AccountComponent } from './account/account.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
+import { ShareableDialog } from './edit-page/edit-page.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AboutComponent } from './about/about.component';
     AccountComponent,
     LandingComponent,
     SignupComponent,
-    AboutComponent
+    AboutComponent,
+    ShareableDialog,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -52,6 +54,7 @@ import { AboutComponent } from './about/about.component';
     RoutingModule,
     QuillModule
   ],
+  entryComponents: [ShareableDialog],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

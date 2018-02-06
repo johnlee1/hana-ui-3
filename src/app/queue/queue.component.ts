@@ -17,6 +17,10 @@ export class QueueComponent implements OnInit {
 
     ngOnInit() {}
 
+    returnToQueue() {
+        this.showPost = false;
+    }
+
     viewPost(post) {
         this.showPost = true;
         this.post = post;

@@ -5,6 +5,7 @@ import { AboutComponent } from './../about/about.component';
 import { LandingComponent } from './../landing/landing.component';
 import { LoginComponent } from './../login/login.component';
 import { MainComponent } from './../main/main.component';
+import { PageComponent } from './../page/page.component';
 import { SignupComponent } from './../signup/signup.component';
 
 // import { AuthRoutes } from './../components/auth/auth.routes';
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'page/:page_id', component: PageComponent },
     { path: 'signup', component: SignupComponent },
 //   { path: '', component: MainComponent },
 //   ...AuthRoutes,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PageService } from './../services/page.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class PageCodeComponent implements OnInit {
     pageCode: string;
     page;
 
-    constructor(private pageService: PageService) {}
+    constructor(private router: Router, private pageService: PageService) {}
 
     ngOnInit() {}
 
@@ -19,7 +20,13 @@ export class PageCodeComponent implements OnInit {
         this.pageService.searchCode(this.pageCode)
                         .subscribe(res => {
                             this.page = res.page;
-                            console.log(this.page);
+                        });
+    }
+
+    joinPage() {
+        this.pageService.joinPage(this.page._id, this.pageCode)
+                        .subscribe(res => {
+                            this.router.navigate(['/page', this.page._id]);
                         });
     }
 

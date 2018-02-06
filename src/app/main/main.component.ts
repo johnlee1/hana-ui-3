@@ -67,6 +67,7 @@ export class MainComponent implements OnInit {
         this.setAllContentPropertiesToFalse();
         this.pageService.getPage(page_id)
                         .subscribe(res => {
+                            console.log(res);
                             this.page = res.page;
                             this.level = res.level;
                             this.showContentPage = true;

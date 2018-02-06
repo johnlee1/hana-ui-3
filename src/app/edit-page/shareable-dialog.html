@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Invite Others</h1>
+
+<div mat-dialog-content>
+    <span>Anyone with the link can become </span>
+    <mat-form-field>
+        <mat-select [(value)]="selected">
+            <mat-option value="admin">an admin</mat-option>
+            <mat-option value="contributor">a contributor</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="copyLink()">Copy Link</button>
+    <input *ngIf="selected=='admin'" class="links" [value]="adminPageCode" readonly/>
+    <input *ngIf="selected=='contributor'" class="links" [value]="contributorPageCode" readonly/>
+    <div class="input-group bottom">
+        <div class="notificationWrapper">
+            <div [hidden]="!notification" class="notification">Link copied to clipboard.</div>
+        </div>
+        <div class="btnWrapper">
+            <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>
+        </div>
+    </div>
+</div>

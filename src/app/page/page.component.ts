@@ -18,6 +18,7 @@ export class PageComponent implements OnInit {
         this.setAllPropertiesToFalse();
         this.showPosts = true;
         this.page = currentPage;
+        console.log(this.page);
     }
 
     page;

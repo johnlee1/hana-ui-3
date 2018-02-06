@@ -21,15 +21,22 @@
 </div>
 <div class="row">
     <div class="col-md-2 write-header">page code</div>
-    {{page_code}}
-    <button class="btn btn-secondary btn-sm" (click)="refreshCode()">Refresh Page Code</button>
+    <div class="col-md-8">
+        {{page_code}}
+        <button class="btn btn-secondary btn-sm" (click)="openDialog()">Refresh Page Code</button> 
+    </div>
 </div>
 <div class="row">
-    Current Admins
-    Current Contributors
+    <div class="col-md-2 write-header">admins</div>
+    <div class="col-md-8" *ngFor="let admin of admins">
+        {{admin.name}}
+    </div>
 </div>
 <div class="row">
-    Requestors
+    <div class="col-md-2 write-header">contributors</div>
+    <div class="col-md-8" *ngFor="let contributor of contributors">
+        {{contributor.name}}
+    </div>
 </div>
 <div class="col-md-10">
     <button class="btn btn-outline-primary pointer submit-post-btn pull-right" color="primary" (click)="createPage()">Update Page</button>

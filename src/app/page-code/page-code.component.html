@@ -1,18 +1,23 @@
 <div class="col-md-4 offset-md-4 text-center">
-    <div>Enter Page Code</div>
-    <input autofocus type="text" class="form-control" [(ngModel)]="pageCode">
-    <button mat-raised-button (click)="enterPageCode()">Search for Page</button>
+    <div class="title">Enter Page Code</div>
+    <div class="input-group search-form">
+        <input autofocus type="text" class="form-control" [(ngModel)]="pageCode">
+        <button class="btn btn-secondary btn-sm custom-btn pointer search-btn" (click)="enterPageCode()"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+</div>
 
+<div class="col-md-8 offset-md-2">
     <div *ngIf="page">
         <mat-card>
             <div class="subject" [innerHTML]="page.name"></div> 
             <div class="prayer" [innerHTML]="page.description"></div>
+            <div class="joinPageBtn">
+                <button class="btn btn-secondary btn-sm custom-btn pointer" (click)="joinPage()">Join Page</button>
+            </div>
         </mat-card>
-        <button mat-raised-button>request to be an admin</button>
-        <button mat-raised-button> request to be a contributor</button>
     </div>
 
-    <div *ngIf="!page">
-       Page not found.
+    <div class="text-center" *ngIf="!page">
+        Page not found.
     </div>
 </div>
