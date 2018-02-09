@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './../about/about.component';
 import { LandingComponent } from './../landing/landing.component';
+import { JoinPageComponent } from './../join-page/join-page.component';
 import { LoginComponent } from './../login/login.component';
 import { MainComponent } from './../main/main.component';
 import { PageComponent } from './../page/page.component';
@@ -21,6 +22,7 @@ import { SignupComponent } from './../signup/signup.component';
 const appRoutes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'join_page/:page_id/:page_code', component: JoinPageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'page/:page_id', component: PageComponent },
     { path: 'signup', component: SignupComponent },

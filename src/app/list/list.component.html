@@ -1,0 +1,26 @@
+<div class="col-md-8 offset-md-2">
+    <div class="title" (click)="returnToPage()">{{list.name}}</div>
+    <!-- <div class="btns">
+        <button *ngIf="level==='admin'" class="btn btn-secondary btn-sm custom-btn pointer" (click)="editPage()">Edit Page</button>
+    </div> -->
+</div>
+
+<div *ngIf="showPosts" class="col-md-8 offset-md-2">
+    <div *ngFor="let post of list.posts">
+        <mat-card (click)="viewPost(post._id)" 
+                    (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)"
+                    [ngClass]="{'card-urgent': post.urgent}">
+            <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
+            <div class="subject" [innerHTML]="post.subject"></div> 
+            <div class="prayer" [innerHTML]="post.prayer"></div>
+        </mat-card>
+    </div>
+</div>
+
+<!-- <div *ngIf="showEditPage">
+    <app-edit-page [editPage]="page"></app-edit-page>
+</div> -->
+
+<div *ngIf="showPost">
+    <app-post [post]="post"></app-post>
+</div>

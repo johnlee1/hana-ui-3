@@ -1,0 +1,33 @@
+<div *ngIf="showCreatePage">
+    <h1 mat-dialog-title>Create Page</h1>
+
+    <div mat-dialog-content>
+        <mat-form-field class="newDialogField">
+            <input matInput placeholder="Name" [(ngModel)]="name">
+        </mat-form-field>
+        <mat-form-field class="newDialogField">
+            <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="1"
+            matAutosizeMaxRows="20" [(ngModel)]="description"></textarea>        
+        </mat-form-field>
+        <div class="input-group bottom">
+            <div class="btnWrapper">
+                <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showCreateList">
+    <h1 mat-dialog-title>Create List</h1>
+
+    <div mat-dialog-content>
+        <mat-form-field class="newDialogField">
+            <input matInput placeholder="Name" [(ngModel)]="name">
+        </mat-form-field>
+        <div class="input-group bottom">
+            <div class="btnWrapper">
+                <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>
+            </div>
+        </div>
+    </div>
+</div>

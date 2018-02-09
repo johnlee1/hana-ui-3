@@ -3,7 +3,8 @@ export class Page {
     name: string;
     description: string;
     created_date: Date;
-    code: string;
+    admin_code: string;
+    contributor_code: string;
     admins: string[];
     contributors: string[];
     followers: string[];

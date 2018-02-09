@@ -17,8 +17,8 @@
 
         <div *ngIf="showSidebarMain">
             <mat-nav-list id="sidebar-main">
-                <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getQueue()">Queue</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getLists()">Lists</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getAccount()">My Account</mat-list-item>
             </mat-nav-list>
@@ -34,8 +34,8 @@
                 <div class="sidebar-header">
                     Pages
                     <div>
-                        <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="getCreatePage()"></i>
-                        <i class="fa fa-code pull-right" aria-hidden="true" (click)="getEnterPageCode()"></i>
+                        <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="openDialogCreatePage()"></i>
+                        <!-- <i class="fa fa-code pull-right" aria-hidden="true" (click)="getEnterPageCode()"></i> -->
                     </div>
                 </div>
                 <div *ngFor="let page of adminPages">
@@ -51,8 +51,25 @@
             </mat-nav-list>
         </div>
         
-        <div *ngIf="lists">
-            Lists
+        <div *ngIf="showSidebarLists">
+            <mat-nav-list>
+                <mat-list-item class="sidebar-item go-back" (click)="getMain()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    &nbsp; 
+                    Main Menu
+                </mat-list-item>
+                <div class="sidebar-header">
+                    Lists
+                    <div>
+                        <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="openDialogCreateList()"></i>
+                    </div>
+                </div>
+                <div *ngFor="let list of lists">
+                    <mat-list-item class="sidebar-item" (click)="getList(list._id)">
+                        <a matLine>{{list.name}}</a>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
         </div>
 
     </mat-sidenav>
@@ -74,6 +91,10 @@
 
         <div *ngIf="showContentEnterPageCode">
             <app-page-code></app-page-code>
+        </div>
+
+        <div *ngIf="showContentList">
+            <app-list [list]="list"></app-list>
         </div>
 
         <div *ngIf="showContentPage">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PageService } from './../services/page.service';
 
+// this component can be deleted???
+
 @Component({
   selector: 'app-page-code',
   templateUrl: './page-code.component.html',

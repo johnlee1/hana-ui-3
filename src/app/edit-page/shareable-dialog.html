@@ -3,6 +3,7 @@
 <div mat-dialog-content>
     <span>Anyone with the link can become </span>
     <mat-form-field>
+        <!-- add popup when user changes selection - see google docs for example -->
         <mat-select [(value)]="selected">
             <mat-option value="admin">an admin</mat-option>
             <mat-option value="contributor">a contributor</mat-option>
@@ -15,6 +16,9 @@
         <div class="notificationWrapper">
             <div [hidden]="!notification" class="notification">Link copied to clipboard.</div>
         </div>
+        <!-- <div class="notificationWrapper">
+            <div [hidden]="!notification" class="notification">Link sharing updated.</div>
+        </div> -->
         <div class="btnWrapper">
             <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>
         </div>

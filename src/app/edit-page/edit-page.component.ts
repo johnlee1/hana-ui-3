@@ -17,8 +17,8 @@ export class EditPageComponent implements OnInit {
         this.contributors = editPage.contributors;
         this.description = editPage.description;
         this.name = editPage.name;
-        this.adminPageCode = 'https://prayforhana.org/join_page/' + editPage._id + '/' + editPage.code;
-        this.contributorPageCode = editPage.code;
+        this.adminPageCode = 'https://prayforhana.org/join_page/' + editPage._id + '/' + editPage.admin_code;
+        this.contributorPageCode = 'https://prayforhana.org/join_page/' + editPage._id + '/' + editPage.contributor_code;
         this.page = editPage;
     }
 
@@ -36,14 +36,14 @@ export class EditPageComponent implements OnInit {
 
     openDialog(): void {
         let dialogRef = this.dialog.open(ShareableDialog, {
-          width: '40%',
-          data: { adminPageCode: this.adminPageCode, contributorPageCode: "hehe" }
+            width: '40%',
+            data: { adminPageCode: this.adminPageCode, contributorPageCode: this.contributorPageCode }
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
+            console.log('The dialog was closed');
         });
-      }
+    }
 
     // refreshCode() {
     //     this.pageService.refreshCode(this.page._id)
@@ -54,12 +54,12 @@ export class EditPageComponent implements OnInit {
 
     // utils
 
-    descriptionContentChanged(quill) {
+    descriptionContentChanged(quill): void {
         if (quill.editor.getLength() >= 2000)
             quill.editor.deleteText(2000, quill.editor.getLength())
     }
 
-    nameContentChanged(quill) {
+    nameContentChanged(quill): void {
         if (quill.editor.getLength() >= 200)
             quill.editor.deleteText(200, quill.editor.getLength())
     }
@@ -116,6 +116,9 @@ export class ShareableDialog {
 
     onNoClick(): void {
         this.dialogRef.close();
-    }   
+    }
 
+    selectionUpdated() {
+        console.log("test");
+    }
 }

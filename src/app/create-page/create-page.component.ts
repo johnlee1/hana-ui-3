@@ -2,6 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PageService } from './../services/page.service';
 import { Page } from './../page/page';
 
+// THIS COMPONENT CAN BE DELETED
+
+
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
