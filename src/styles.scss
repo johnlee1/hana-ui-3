@@ -11,6 +11,10 @@ $font-size-s: 18px;
     width: 600px;
 }
 
+mat-card:hover {
+    cursor: pointer;
+}
+
 mat-list-item > .mat-list-item-content {
     padding: 0 !important;
 }

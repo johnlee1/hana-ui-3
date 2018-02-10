@@ -1,6 +1,7 @@
-import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from './post';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MatMenuModule, MAT_DIALOG_DATA } from '@angular/material';
 import { ListService } from './../services/list.service';
 
 @Component({
@@ -11,8 +12,10 @@ import { ListService } from './../services/list.service';
 export class PostComponent implements OnInit {
 
     @Input() post: Post;
+    @Input() listId: string;
+    @Output() postRemovedFromList = new EventEmitter<string>();
 
-    constructor(public dialog: MatDialog) { }
+    constructor(public dialog: MatDialog, private router: Router, private listService: ListService) { }
 
     ngOnInit() {}
 
@@ -25,6 +28,19 @@ export class PostComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
         });
+    }
+
+    removeFromList(): void {
+        if (this.listId == null)
+            return;
+
+        let input = {};
+        input["post_id"] = this.post._id;
+        this.listService.removePost(input, this.listId)
+                        .subscribe(res => {
+                            const success = res.message === 'success';
+                            this.postRemovedFromList.emit(this.post._id);
+                        });
     }
 
 }
@@ -52,15 +68,19 @@ export class AddListDialog {
                         });
     }
 
-    addToList(listId): void {
+    addToList(listId: string): void {
         let input = {};
         input["post_id"] = this.postId;
         this.listService.addPost(input, listId)
-            .subscribe(list => {
+            .subscribe(res => {
+                const success = res.message === 'success';
+                this.onNoClick(success);
             });
     }
 
-    onNoClick(): void {}
+    onNoClick(success): void {
+        this.dialogRef.close({success: success});
+    }
 
     // utils
 

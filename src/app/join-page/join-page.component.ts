@@ -21,6 +21,7 @@ export class JoinPageComponent implements OnInit {
                 this.pageService
                     .joinPage(page_id, page_code)
                     .subscribe(res => {
+                        console.log(res);
                         if (res.message === 'success') {
                             this.router.navigate(['/page/', page_id]);
                         } else {

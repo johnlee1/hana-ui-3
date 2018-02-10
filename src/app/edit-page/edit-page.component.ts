@@ -2,6 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Page } from './../page/page';
 // import { PageService } from './../services/page.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-edit-page',
@@ -12,13 +13,12 @@ export class EditPageComponent implements OnInit {
 
     @Input()
     set editPage(editPage: Page) {
-        console.log(editPage);
         this.admins = editPage.admins;
         this.contributors = editPage.contributors;
         this.description = editPage.description;
         this.name = editPage.name;
-        this.adminPageCode = 'https://prayforhana.org/join_page/' + editPage._id + '/' + editPage.admin_code;
-        this.contributorPageCode = 'https://prayforhana.org/join_page/' + editPage._id + '/' + editPage.contributor_code;
+        this.adminPageCode = environment.host + 'join_page/' + editPage._id + '/' + editPage.admin_code;
+        this.contributorPageCode = environment.host + 'join_page/' + editPage._id + '/' + editPage.contributor_code;
         this.page = editPage;
     }
 

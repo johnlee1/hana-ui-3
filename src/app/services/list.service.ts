@@ -39,9 +39,9 @@ export class ListService {
                     .catch(ServiceConfig.handleError);
   }
 
-  refreshCode(page_id) {
-      const body = JSON.stringify({});
-      return this.http.put(ServiceConfig.URL + 'pages/refresh_code/' + page_id, body, { headers: ServiceConfig.createHeader() })
+  removePost(input, list_id) {
+      const body = JSON.stringify(input);
+      return this.http.put(ServiceConfig.URL + 'lists/removePost/' + list_id, body, { headers: ServiceConfig.createHeader() })
                  .map(ServiceConfig.extractData)
                  .catch(ServiceConfig.handleError);
   }

@@ -43,6 +43,11 @@
                         <a matLine>{{page.name}}</a>
                     </mat-list-item>
                 </div>
+                <div *ngFor="let page of contributorPages">
+                        <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
+                            <a matLine>{{page.name}}</a>
+                        </mat-list-item>
+                    </div>
                 <div *ngFor="let page of memberPages">
                     <mat-list-item class="sidebar-item" (click)="getPage(page._id)">
                         <a matLine>{{page.name}}</a>

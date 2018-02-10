@@ -3,5 +3,16 @@
     <div class="date writing">{{post.create_date | date: 'MM/dd/yy'}}</div>
     <div class="story writing" [innerHTML]="post.story"></div>
     <div class="prayer writing" [innerHTML]="post.prayer"></div>
-    <i class="fa fa-ellipsis-h fa-2x pull-right" (click)="addToList()"></i>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="pull-right">
+        <mat-icon>more_horiz</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="before">
+        <button mat-menu-item (click)="addToList()">
+            <!-- <mat-icon>dialpad</mat-icon> -->
+            <span>Add to List</span>
+        </button>
+        <button *ngIf="listId != null" mat-menu-item (click)="removeFromList()">
+            <span>Remove from this List</span>
+        </button>
+    </mat-menu>
 </div>

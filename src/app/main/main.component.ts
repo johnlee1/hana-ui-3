@@ -17,10 +17,12 @@ import { MatInputModule } from '@angular/material/input';
 export class MainComponent implements OnInit {
 
     adminPages;
+    contributorPages;
+    memberPages;
+
     level: string; // page level
     list;
     lists;
-    memberPages;
     page: Page;
     post: Post;
     queue;
@@ -68,16 +70,16 @@ export class MainComponent implements OnInit {
     //     this.showContentCreatePage = true;
     // }
 
-    getEnterPageCode() {
+    getEnterPageCode(): void {
         this.setAllContentPropertiesToFalse();
         this.showContentEnterPageCode = true;
     }
 
-    getList(list_id: string) {
+    getList(list_id: string): void {
         this.setAllContentPropertiesToFalse();
         this.listService.getList(list_id)
-                        .subscribe(list => {
-                            this.list = list;
+                        .subscribe(res => {
+                            this.list = res;
                             this.showContentList = true;
                         });
     }
@@ -115,8 +117,10 @@ export class MainComponent implements OnInit {
         this.showSidebarMain = false;
         this.pageService.getPages()
                         .subscribe(pages => {
+                            console.log(pages);
                             this.loading = false;
                             this.adminPages = pages.adminPages;
+                            this.contributorPages = pages.contributorPages;
                             this.memberPages = pages.memberPages;
                             this.showSidebarPages = true;
                         });
@@ -197,6 +201,7 @@ export class MainComponent implements OnInit {
         this.showContentAccount = false;
         this.showContentCreatePage = false;
         this.showContentEnterPageCode = false;
+        this.showContentList = false;
         this.showContentPage = false;
         this.showContentPost = false;
         this.showContentQueue = false;
