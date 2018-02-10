@@ -20,9 +20,9 @@ export class ListService {
                     .catch(ServiceConfig.handleError);
   }
 
-  updatePage(input, page_id) {
+  addPost(input, list_id) {
     const body = JSON.stringify(input);
-    return this.http.put(ServiceConfig.URL + 'pages/' + page_id, body, { headers: ServiceConfig.createHeader() })
+    return this.http.put(ServiceConfig.URL + 'lists/addPost/' + list_id, body, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);
   }

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Add to List</h1>
+
+<div mat-dialog-content>
+    <div *ngFor="let list of lists">
+        <mat-card (click)="addToList(list._id)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
+            <div>{{list.name}}</div> 
+        </mat-card>
+    </div>
+</div>

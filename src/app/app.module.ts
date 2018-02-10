@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
+import { ListService } from './services/list.service';
 import { PostComponent } from './post/post.component';
 import { PageComponent } from './page/page.component';
 import { SearchComponent } from './search/search.component';
@@ -25,6 +26,7 @@ import { AccountComponent } from './account/account.component';
 import { LandingComponent } from './landing/landing.component';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
+import { AddListDialog } from './post/post.component';
 import { ShareableDialog } from './edit-page/edit-page.component';
 import { NewDialog } from './main/main.component';
 import { JoinPageComponent } from './join-page/join-page.component';
@@ -52,6 +54,7 @@ import { ListComponent } from './list/list.component';
     JoinPageComponent,
     NewDialog,
     ListComponent,
+    AddListDialog
   ],
   imports: [
     BrowserAnimationsModule,
@@ -63,8 +66,8 @@ import { ListComponent } from './list/list.component';
     QuillModule,
     MatInputModule
   ],
-  entryComponents: [NewDialog, ShareableDialog],
-  providers: [AuthService],
+  entryComponents: [AddListDialog, NewDialog, ShareableDialog],
+  providers: [AuthService, ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

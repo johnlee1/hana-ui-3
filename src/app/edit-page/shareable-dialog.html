@@ -14,10 +14,10 @@
     <input *ngIf="selected=='contributor'" class="links" [value]="contributorPageCode" readonly/>
     <div class="input-group bottom">
         <div class="notificationWrapper">
-            <div [hidden]="!notification" class="notification">Link copied to clipboard.</div>
+            <div [hidden]="!notification" class="notification alert alert-warning">Link copied to clipboard.</div>
         </div>
         <!-- <div class="notificationWrapper">
-            <div [hidden]="!notification" class="notification">Link sharing updated.</div>
+            <div [hidden]="!notification" class="notification alert alert-warning">Link sharing updated.</div>
         </div> -->
         <div class="btnWrapper">
             <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>

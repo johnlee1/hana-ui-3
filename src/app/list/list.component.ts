@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { ListService } from './../services/list.service';
 
 @Component({
@@ -13,8 +13,20 @@ export class ListComponent implements OnInit {
     showPost: boolean;
     showPosts: boolean = true;;
 
-    constructor(private listService: ListService) { }
+    constructor(private renderer2: Renderer2, private listService: ListService) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(this.list);
+    }
+
+    // utils
+
+    mouseenter(event) {
+        this.renderer2.addClass(event.target, 'mat-elevation-z5')
+     }
+     
+    mouseleave(event) {
+        this.renderer2.removeClass(event.target, 'mat-elevation-z5')
+    }
 
 }
