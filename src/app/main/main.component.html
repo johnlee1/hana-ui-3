@@ -17,9 +17,9 @@
 
         <div *ngIf="showSidebarMain">
             <mat-nav-list id="sidebar-main">
-                <mat-list-item class="sidebar-item" (click)="getQueue()">Queue</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getQueue()">Feed</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
-                <mat-list-item class="sidebar-item" (click)="getLists()">Lists</mat-list-item>
+                <mat-list-item class="sidebar-item" (click)="getLists()">My Lists</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getAccount()">My Account</mat-list-item>
             </mat-nav-list>
         </div>
@@ -64,7 +64,7 @@
                     Main Menu
                 </mat-list-item>
                 <div class="sidebar-header">
-                    Lists
+                    My Lists
                     <div>
                         <i class="fa fa-plus-circle pull-right" aria-hidden="true" (click)="openDialogCreateList()"></i>
                     </div>

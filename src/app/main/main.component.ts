@@ -1,12 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSidenavModule } from '@angular/material';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+
 import { Page } from './../page/page';
-import { PageService } from './../services/page.service';
 import { Post } from './../post/post';
+
+import { PageService } from './../services/page.service';
 import { ListService } from './../services/list.service';
 import { PostService } from './../services/post.service';
 import { UserService } from './../services/user.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSidenavModule } from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
@@ -42,17 +46,23 @@ export class MainComponent implements OnInit {
     showContentList: boolean;
     showContentPage: boolean;
     showContentPost: boolean;
-    showContentQueue: boolean = true;
+    showContentQueue: boolean;
     showContentSearch: boolean;
 
-    constructor(public dialog: MatDialog,
+    constructor(public dialog: MatDialog, private route: ActivatedRoute, private router: Router,
                 private listService: ListService,
                 private pageService: PageService,
                 private postService: PostService,
                 private userService: UserService) {}
 
     ngOnInit() {
-        this.getQueue();
+        this.route.params.subscribe((params) => {
+            const page_id = params["page_id"];
+            if (this.router.url.includes("/pages/") && page_id != null)
+                this.getPage(page_id);
+            else
+                this.getQueue();
+        });
     }
 
     getAccount() {
@@ -105,9 +115,9 @@ export class MainComponent implements OnInit {
         this.setAllContentPropertiesToFalse();
         this.pageService.getPage(page_id)
                         .subscribe(res => {
-                            console.log(res);
                             this.page = res.page;
                             this.level = res.level;
+                            this.router.navigate(['pages/', this.page._id]);
                             this.showContentPage = true;
                         });
     }
@@ -154,6 +164,7 @@ export class MainComponent implements OnInit {
             let newPage = {};
             newPage["name"] = result.name;
             newPage["description"] = result.description;
+            newPage["private"] = result.private;
             this.pageService
                 .createPage(newPage)
                 .subscribe(page => {
@@ -218,6 +229,7 @@ export class NewDialog {
 
     description: string;
     name: string;
+    visibility: string;
     showCreatePage: boolean;
     showCreateList: boolean;
 
@@ -225,9 +237,11 @@ export class NewDialog {
                 @Inject(MAT_DIALOG_DATA) public data: any) { 
             this.showCreatePage = data.showCreatePage;
             this.showCreateList = data.showCreateList;
+            this.visibility = "public";
         }
 
     onNoClick(): void {
-        this.dialogRef.close({name: this.name, description: this.description});
+        this.dialogRef.close({name: this.name, description: this.description,
+                              private: this.visibility});
     }
 }

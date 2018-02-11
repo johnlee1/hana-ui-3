@@ -20,13 +20,12 @@
     </quill-editor>
 </div>
 <div class="row">
-    <div class="col-md-2 write-header">page code</div>
+    <div class="col-md-2 write-header"></div>
     <div class="col-md-8">
-        {{page_code}}
-        <button class="btn btn-secondary btn-sm" (click)="openDialog()">Refresh Page Code</button> 
+        <button class="btn btn-secondary btn-sm pointer" (click)="openDialog()">Add Admins or Contributors</button> 
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-2 write-header">admins</div>
     <div class="col-md-8" *ngFor="let admin of admins">
         {{admin.name}}
@@ -37,7 +36,7 @@
     <div class="col-md-8" *ngFor="let contributor of contributors">
         {{contributor.name}}
     </div>
-</div>
+</div> -->
 <div class="col-md-10">
     <button class="btn btn-outline-primary pointer submit-post-btn pull-right" color="primary" (click)="createPage()">Update Page</button>
 </div>

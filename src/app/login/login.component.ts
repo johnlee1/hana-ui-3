@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   
     ngOnInit() {
       if (localStorage.getItem('hanaauthtoken') && localStorage.getItem('hanauserid')) {
-        this.router.navigate(['/main', localStorage.getItem('hanauserid')]);
+        this.router.navigate(['/feed']);
       }
     }
   
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           .login(input)
           .subscribe(res => {
             if (res.token)
-                this.router.navigate(['/main', localStorage.getItem('hanauserid')]);
+                this.router.navigate(['/feed']);
             else
                 this.error = res.error;
           });

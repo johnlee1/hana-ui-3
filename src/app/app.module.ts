@@ -31,6 +31,7 @@ import { ShareableDialog } from './edit-page/edit-page.component';
 import { NewDialog } from './main/main.component';
 import { JoinPageComponent } from './join-page/join-page.component';
 import { ListComponent } from './list/list.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ListComponent } from './list/list.component';
     JoinPageComponent,
     NewDialog,
     ListComponent,
-    AddListDialog
+    AddListDialog,
+    ConfirmComponent
   ],
   imports: [
     BrowserAnimationsModule,

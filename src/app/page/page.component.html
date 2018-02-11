@@ -4,7 +4,7 @@
     <div *ngIf="page.followers.length===1" class="followers description">{{page.followers.length}} follower</div>
     <div *ngIf="page.followers.length!=1" class="followers description">{{page.followers.length}} followers</div>
     <div class="btns">
-        <button class="btn btn-secondary btn-sm custom-btn pointer" *ngIf="!showCreatePost" (click)="createPost()">Write a Prayer Post</button>
+        <button *ngIf="(level==='admin' || level==='contributor') && !showCreatePost" class="btn btn-secondary btn-sm custom-btn pointer" (click)="createPost()">Write a Prayer Post</button>
         <button *ngIf="level==='admin'" class="btn btn-secondary btn-sm custom-btn pointer" (click)="editPage()">Edit Page</button>
     </div>
 </div>

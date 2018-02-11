@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './../about/about.component';
+import { ConfirmComponent } from './../confirm/confirm.component';
 import { JoinPageComponent } from './../join-page/join-page.component';
 import { LandingComponent } from './../landing/landing.component';
 import { ListComponent } from './../list/list.component';
@@ -23,10 +24,11 @@ import { SignupComponent } from './../signup/signup.component';
 const appRoutes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'confirm/:token', component: ConfirmComponent },
     { path: 'join_page/:page_id/:page_code', component: JoinPageComponent },
     { path: 'list/:list_id', component: ListComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'page/:page_id', component: PageComponent },
+    { path: 'pages/:page_id', component: MainComponent },
     { path: 'signup', component: SignupComponent },
 //   { path: '', component: MainComponent },
 //   ...AuthRoutes,

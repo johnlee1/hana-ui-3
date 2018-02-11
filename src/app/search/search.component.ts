@@ -9,9 +9,13 @@ import { PageService } from './../services/page.service';
 })
 export class SearchComponent implements OnInit {
 
+    level;
+    page;
     pages;
     pages_msg: String;
     searchTerm$ = new Subject<string>();
+    showResults: boolean = true;
+    showPage: boolean;
 
     constructor(private pageService: PageService,
                 private renderer2: Renderer2) {
@@ -26,6 +30,18 @@ export class SearchComponent implements OnInit {
      }
 
     ngOnInit() {}
+
+    viewPage(page): void {
+        this.showResults = false;
+        this.pageService.getPage(page._id)
+                        .subscribe(res => {
+                            this.level = res.level;
+                            this.page = res.page;
+                            this.showPage = true;
+                        })
+    }
+
+    // utils
 
     mouseenter (event) {
         this.renderer2.addClass(event.target, 'mat-elevation-z5')

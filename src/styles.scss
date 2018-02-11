@@ -19,6 +19,18 @@ mat-list-item > .mat-list-item-content {
     padding: 0 !important;
 }
 
+.mat-radio-outer-circle {
+    border-color: grey !important;
+}
+
+.mat-radio-inner-circle {
+    background-color: black !important;
+}
+
+.mat-radio-label-content {
+    padding-right: 25px !important;
+}
+
 div > .mat-nav-list {
     padding-top: 0;
 }

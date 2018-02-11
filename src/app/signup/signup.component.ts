@@ -20,14 +20,12 @@ export class SignupComponent implements OnInit {
 
     register(input) {
         this.authService.register(input)
-                        .subscribe(
-                            res => {
-                                if (res.token)
-                                    this.router.navigate(['/home']);
-                                else
-                                    this.error = res.error;
-                            },
-                            err => {
+                        .subscribe(res => {
+                            if (res.token)
+                                this.router.navigate(['/feed']);
+                            else
+                                this.error = res.error;
+                        }, err => {
                                 this.error = 'Please try a different password.';
                             }
                         );

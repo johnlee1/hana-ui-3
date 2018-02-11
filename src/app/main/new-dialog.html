@@ -9,6 +9,10 @@
             <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="1"
             matAutosizeMaxRows="20" [(ngModel)]="description"></textarea>        
         </mat-form-field>
+        <mat-radio-group [(ngModel)]="visibility">
+            <mat-radio-button value="public">Public</mat-radio-button>
+            <mat-radio-button value="private">Private</mat-radio-button>
+        </mat-radio-group>
         <div class="input-group bottom">
             <div class="btnWrapper">
                 <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>
