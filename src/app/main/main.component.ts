@@ -149,8 +149,9 @@ export class MainComponent implements OnInit {
             width: '50%',
             data: { showCreatePage: true, showCreateList: false}
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
+          console.log(result);
             let newPage = {};
             newPage["name"] = result.name;
             newPage["description"] = result.description;
@@ -168,7 +169,7 @@ export class MainComponent implements OnInit {
             width: '50%',
             data: { showCreatePage: false, showCreateList: true}
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
             let newList = {};
             console.log(result);
@@ -185,7 +186,7 @@ export class MainComponent implements OnInit {
         this.setAllContentPropertiesToFalse();
         this.page = page;
         this.level = 'admin';
-        this.showContentPage = true; 
+        this.showContentPage = true;
     }
 
     showSearch() {
@@ -222,7 +223,7 @@ export class NewDialog {
     showCreateList: boolean;
 
     constructor(public dialogRef: MatDialogRef<NewDialog>,
-                @Inject(MAT_DIALOG_DATA) public data: any) { 
+                @Inject(MAT_DIALOG_DATA) public data: any) {
             this.showCreatePage = data.showCreatePage;
             this.showCreateList = data.showCreateList;
         }
