@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from './../services/post.service';
 
 @Component({
@@ -49,7 +50,7 @@ export class CreatePostComponent implements OnInit {
     // util
     toolTipPos: string = 'right';
 
-    constructor(private postService: PostService) {}
+    constructor(private router: Router, private postService: PostService) {}
 
     ngOnInit() {}
 
@@ -71,9 +72,7 @@ export class CreatePostComponent implements OnInit {
         newPost["pageName"] = this.pageName;
         this.postService.createPost(newPost)
                         .subscribe(res => {
-                            // this.setAllPropertiesToFalse();
-                            // this.getPage();
-                            // this.showPosts = true;
+                            this.router.navigate(['/page/', this.pageId]);
                         });
     }
 

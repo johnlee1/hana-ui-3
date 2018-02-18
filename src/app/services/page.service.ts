@@ -47,13 +47,6 @@ export class PageService {
                     .catch(ServiceConfig.handleError);
   }
 
-  refreshCode(page_id) {
-      const body = JSON.stringify({});
-      return this.http.put(ServiceConfig.URL + 'pages/refresh_code/' + page_id, body, { headers: ServiceConfig.createHeader() })
-                 .map(ServiceConfig.extractData)
-                 .catch(ServiceConfig.handleError);
-  }
-
   search(terms: Observable<string>) {
     return terms.debounceTime(400)
                 .distinctUntilChanged()
