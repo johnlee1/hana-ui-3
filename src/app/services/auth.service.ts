@@ -24,6 +24,7 @@ export class AuthService {
                             if (res.token) {
                                 localStorage.setItem('hanaauthtoken', res.token);
                                 localStorage.setItem('hanauserid', res.user_id);
+                                localStorage.setItem('hanausername', res.user_name);
                             }
                             return res;
                         })

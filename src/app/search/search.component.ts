@@ -1,4 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Subject } from 'rxjs/Subject';
 import { PageService } from './../services/page.service';
 
@@ -9,6 +11,8 @@ import { PageService } from './../services/page.service';
 })
 export class SearchComponent implements OnInit {
 
+    @Input() query: string;
+
     level;
     page;
     pages;
@@ -17,28 +21,31 @@ export class SearchComponent implements OnInit {
     showResults: boolean = true;
     showPage: boolean;
 
-    constructor(private pageService: PageService,
-                private renderer2: Renderer2) {
+    constructor(private renderer2: Renderer2, private location: Location, private router: Router, 
+                private pageService: PageService) {
         this.pageService.search(this.searchTerm$)
                         .subscribe(pages => {
+                            this.showPage = false;
+                            this.location.go('search/' + this.query);
                             this.pages = pages;
                             this.pages_msg = '';
-                            if (pages.length < 1) {
-                              this.pages_msg = 'No pages found.';
-                            }       
+                            if (pages.length < 1)
+                                this.pages_msg = 'No pages found.';
                         })
      }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.pageService.searchPages(this.query)
+                        .subscribe(pages => {
+                            this.pages = pages;
+                            this.pages_msg = '';
+                            if (pages.length < 1)
+                                this.pages_msg = 'No pages found.';
+                        })
+    }
 
     viewPage(page): void {
-        this.showResults = false;
-        this.pageService.getPage(page._id)
-                        .subscribe(res => {
-                            this.level = res.level;
-                            this.page = res.page;
-                            this.showPage = true;
-                        })
+        this.router.navigate(['/pages/', page._id]);
     }
 
     // utils

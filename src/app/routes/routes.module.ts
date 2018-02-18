@@ -30,6 +30,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'pages/:page_id', component: MainComponent },
     { path: 'signup', component: SignupComponent },
+    { path: 'search/:query', component: MainComponent },
 //   { path: '', component: MainComponent },
 //   ...AuthRoutes,
 //   ...CircleRoutes,

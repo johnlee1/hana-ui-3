@@ -15,12 +15,20 @@
             <i class="fa fa-spinner fa-pulse fa-2x"></i>
         </div>
 
-        <div *ngIf="showSidebarMain">
+        <div *ngIf="showSidebarMain && loggedIn">
             <mat-nav-list id="sidebar-main">
                 <mat-list-item class="sidebar-item" (click)="getQueue()">Feed</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getPages()">Pages</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getLists()">My Lists</mat-list-item>
                 <mat-list-item class="sidebar-item" (click)="getAccount()">My Account</mat-list-item>
+            </mat-nav-list>
+        </div>
+
+        <div *ngIf="showSidebarMain && !loggedIn">
+            <mat-nav-list id="sidebar-main">
+                <mat-list-item class="sidebar-item" routerLink="/login">Login</mat-list-item>
+                <mat-list-item class="sidebar-item" routerLink="/signup">Sign Up</mat-list-item>
+                <mat-list-item class="sidebar-item" routerLink="/about">About</mat-list-item>
             </mat-nav-list>
         </div>
             
@@ -87,7 +95,7 @@
         </div>
 
         <div *ngIf="showContentSearch">
-            <app-search></app-search>
+            <app-search [query]="query"></app-search>
         </div>
 
         <div *ngIf="showContentCreatePage">

@@ -61,8 +61,7 @@ export class PageService {
   }
 
   searchPages(query) {
-    const queryString = `?q=${query}`;
-    return this.http.get(ServiceConfig.URL + 'pages/search' + queryString, { headers: ServiceConfig.createHeader() })
+    return this.http.get(ServiceConfig.URL + 'pages/search/' + query, { headers: ServiceConfig.createHeader() })
                     .map(ServiceConfig.extractData)
                     .catch(ServiceConfig.handleError);
   }

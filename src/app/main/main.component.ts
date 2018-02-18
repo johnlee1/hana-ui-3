@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSidenavModule } from '@angular/material';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
@@ -30,8 +31,11 @@ export class MainComponent implements OnInit {
     page: Page;
     post: Post;
     queue;
+    query: string; // search query
 
     loading: boolean;
+
+    loggedIn: boolean = localStorage.getItem('hanaauthtoken') != null;
 
     showSidebar: boolean = true;
     showSidebarLists: boolean;
@@ -49,7 +53,7 @@ export class MainComponent implements OnInit {
     showContentQueue: boolean;
     showContentSearch: boolean;
 
-    constructor(public dialog: MatDialog, private route: ActivatedRoute, private router: Router,
+    constructor(public dialog: MatDialog, private location: Location, private route: ActivatedRoute, private router: Router,
                 private listService: ListService,
                 private pageService: PageService,
                 private postService: PostService,
@@ -58,8 +62,14 @@ export class MainComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params) => {
             const page_id = params["page_id"];
+            const query = params["query"];
             if (this.router.url.includes("/pages/") && page_id != null)
-                this.getPage(page_id);
+                this.getPageInitial(page_id);
+            else if (this.router.url.includes("/search/") && query != null) {
+                console.log("gottem");
+                this.query = query;
+                this.showSearch();
+            }
             else
                 this.getQueue();
         });
@@ -111,13 +121,25 @@ export class MainComponent implements OnInit {
         this.showSidebarMain = true;
     }
 
+    // when getting page from click on sidebar
     getPage(page_id: string) {
         this.setAllContentPropertiesToFalse();
         this.pageService.getPage(page_id)
                         .subscribe(res => {
                             this.page = res.page;
                             this.level = res.level;
-                            this.router.navigate(['pages/', this.page._id]);
+                            this.location.go('pages/' + this.page._id);
+                            this.showContentPage = true;
+                        });
+    }
+
+    // when getting page from url
+    getPageInitial(page_id: string) {
+        this.setAllContentPropertiesToFalse();
+        this.pageService.getPage(page_id)
+                        .subscribe(res => {
+                            this.page = res.page;
+                            this.level = res.level;
                             this.showContentPage = true;
                         });
     }
@@ -127,7 +149,6 @@ export class MainComponent implements OnInit {
         this.showSidebarMain = false;
         this.pageService.getPages()
                         .subscribe(pages => {
-                            console.log(pages);
                             this.loading = false;
                             this.adminPages = pages.adminPages;
                             this.contributorPages = pages.contributorPages;

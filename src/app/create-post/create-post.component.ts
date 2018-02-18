@@ -9,6 +9,7 @@ import { PostService } from './../services/post.service';
 export class CreatePostComponent implements OnInit {
 
     @Input() pageId: string;
+    @Input() pageName: string;
 
     resolved: boolean = false; // must initialize for sending http request
     resolution = " ";
@@ -66,6 +67,8 @@ export class CreatePostComponent implements OnInit {
         newPost["resolved"] = this.resolved;
         newPost["resolution"] = this.resolution;
         newPost["urgent"] = this.urgent;
+        newPost["authorName"] = localStorage.getItem('hanausername');
+        newPost["pageName"] = this.pageName;
         this.postService.createPost(newPost)
                         .subscribe(res => {
                             // this.setAllPropertiesToFalse();
