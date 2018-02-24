@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from './../services/post.service';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-create-post',
@@ -21,16 +22,16 @@ export class CreatePostComponent implements OnInit {
     newPostSubject;
     newPostStory;
     newPostPrayer;
-    subjectModules = {
-        toolbar: [
-            ['italic', 'strike'],        // toggled buttons
-        ]
-    };
+    // subjectModules = {
+    //     toolbar: [
+    //         ['italic', 'strike'],        // toggled buttons
+    //     ]
+    // };
     storyModules = {
         toolbar: [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
             ['blockquote'],
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'header': 1 }],                                // custom button values
             [{ 'list': 'ordered'}, { 'list': 'bullet' }],
             [{ 'align': this.emptyArray.slice() }],
             ['clean'],                                        // remove formatting button
@@ -39,8 +40,6 @@ export class CreatePostComponent implements OnInit {
     };
     prayerModules = {
         toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
             [{ 'list': 'ordered'}, { 'list': 'bullet' }],
             [{ 'align': this.emptyArray.slice() }],
             ['clean'],                                        // remove formatting button

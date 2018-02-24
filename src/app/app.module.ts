@@ -6,6 +6,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { QuillModule } from 'ngx-quill'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { MatInputModule } from '@angular/material';
 
@@ -66,7 +67,8 @@ import { ConfirmComponent } from './confirm/confirm.component';
     MaterialModule,
     RoutingModule,
     QuillModule,
-    MatInputModule
+    MatInputModule,
+    InfiniteScrollModule
   ],
   entryComponents: [AddListDialog, NewDialog, ShareableDialog],
   providers: [AuthService, ListService],

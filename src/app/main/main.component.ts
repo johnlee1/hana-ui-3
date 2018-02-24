@@ -33,6 +33,8 @@ export class MainComponent implements OnInit {
     queue;
     query: string; // search query
 
+    queueScrollCount: number = 1; // for infinite scroll pagination of feed 
+
     loading: boolean;
 
     loggedIn: boolean = localStorage.getItem('hanaauthtoken') != null;
@@ -229,6 +231,12 @@ export class MainComponent implements OnInit {
 
     // util
 
+    onScroll() {
+        this.queueScrollCount += 1;
+        console.log("scrolled");
+        console.log(this.queueScrollCount);
+    }
+
     setAllContentPropertiesToFalse() {
         this.showContentAccount = false;
         this.showContentCreatePage = false;
@@ -254,15 +262,13 @@ export class NewDialog {
     showCreatePage: boolean;
     showCreateList: boolean;
 
-    constructor(public dialogRef: MatDialogRef<NewDialog>,
-                @Inject(MAT_DIALOG_DATA) public data: any) { 
+    constructor(public dialogRef: MatDialogRef<NewDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { 
             this.showCreatePage = data.showCreatePage;
             this.showCreateList = data.showCreateList;
             this.visibility = "public";
         }
 
     onNoClick(): void {
-        this.dialogRef.close({name: this.name, description: this.description,
-                              private: this.visibility});
+        this.dialogRef.close({name: this.name, description: this.description, private: this.visibility});
     }
 }

@@ -9,6 +9,7 @@ import { Post } from './../post/post';
 export class QueueComponent implements OnInit {
 
     @Input() queue;
+    @Input() queueScrollCount
 
     post: Post;
     showPost: boolean;
@@ -17,6 +18,10 @@ export class QueueComponent implements OnInit {
 
     ngOnInit() {}
 
+    ngOnChanges(changes) {
+        console.log(changes);
+    }
+
     returnToQueue() {
         this.showPost = false;
     }
@@ -24,16 +29,6 @@ export class QueueComponent implements OnInit {
     viewPost(post) {
         this.showPost = true;
         this.post = post;
-    }
-
-    // util
-
-    mouseenter(event) {
-        this.renderer2.addClass(event.target, 'mat-elevation-z5')
-        }
-        
-    mouseleave(event) {
-        this.renderer2.removeClass(event.target, 'mat-elevation-z5')
     }
 
 }

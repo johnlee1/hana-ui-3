@@ -1,16 +1,11 @@
-<div class="col-md-8 offset-md-2">
-    <div class="title" (click)="returnToQueue()">Feed</div>
-    <div class="description">a list of prayer posts from all of the pages you follow</div>
-</div>
-
-
-<div *ngIf="!showPost" class="col-md-8 offset-md-2">
+<div infiniteScroll (scrolled)="onScroll()" *ngIf="!showPost" class="col-md-8 offset-md-2" [fromRoot]="true" [scrollWindow]="true">
     <div *ngFor="let post of queue">
-        <mat-card (click)="viewPost(post)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
-            <div class="pull-right">{{post.create_date | date: 'MM/dd/yy'}}</div>
-            <h5 [innerHTML]="post.subject"></h5>
-            <div [innerHTML]="post.prayer"></div>
-        </mat-card>
+        <div class="post_header">{{post.author_name}} posted in <a class="link" routerLink="/login">{{post.page_name}}</a></div>
+        <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
+        <div (click)="viewPost(post)" class="post_body">
+            <div class="post_subject">{{post.subject}}</div>
+            <div [innerHTML]="post.prayer" class="post_prayer"></div>
+        </div>
     </div>
 </div>
 
