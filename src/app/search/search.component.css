@@ -22,3 +22,11 @@ mat-card:hover {
     margin-right: 3%;
     padding: 0;
 }
+
+.pageInfo {
+    margin-top: 1%;
+}
+
+.pageTitle {
+    font-size: 24px;
+}

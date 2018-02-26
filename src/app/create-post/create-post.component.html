@@ -1,16 +1,18 @@
 <div class="col-md-12">
-    <div class="row mainFormElement">
+    <div class="row subjectField">
         <span class="col-md-2 write-header">Subject</span>
-        <input matInput placeholder="subject" [(ngModel)]="newPostSubject">
+        <mat-form-field class="subject">
+            <input matInput [(ngModel)]="newPostSubject">
+        </mat-form-field>
     </div>
-    <div class="row mainFormElement">
+    <div class="row storyField">
         <div class="col-md-2 write-header">The Story</div>
         <quill-editor class="col-md-8" theme="snow" placeholder="Tell the story..."
                       [modules]="storyModules"
                       [(ngModel)]="newPostStory">
         </quill-editor>
     </div>
-    <div class="row mainFormElement">
+    <div class="row prayerField">
         <div class="col-md-2 write-header">Prayer</div>
         <quill-editor class="col-md-8" theme="snow" placeholder="Write a prayer or share how to pray..."
                       [modules]="prayerModules"

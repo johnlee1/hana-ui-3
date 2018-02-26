@@ -16,6 +16,7 @@ export class PageComponent implements OnInit {
     @Input()
     set currentPage(currentPage: Page) {
         this.setAllPropertiesToFalse();
+        this.showHeaderInfo = true;
         this.showPosts = true;
         this.page = currentPage;
     }
@@ -24,8 +25,9 @@ export class PageComponent implements OnInit {
     post: Post;
     showCreatePost: boolean;
     showEditPage: boolean;
+    showHeaderInfo: boolean;
     showPost: boolean;
-    showPosts: boolean = true;;
+    showPosts: boolean;
 
     // util
     toolTipPos: string = 'right';
@@ -55,6 +57,7 @@ export class PageComponent implements OnInit {
 
     returnToPage() {
         this.setAllPropertiesToFalse();
+        this.showHeaderInfo = true;
         this.showPosts = true;
     }
 
@@ -71,16 +74,9 @@ export class PageComponent implements OnInit {
 
     // utils
 
-    mouseenter(event) {
-        this.renderer2.addClass(event.target, 'mat-elevation-z5')
-     }
-     
-    mouseleave(event) {
-        this.renderer2.removeClass(event.target, 'mat-elevation-z5')
-    }
-
     setAllPropertiesToFalse() {
         this.showCreatePost = false;
+        this.showHeaderInfo = false;
         this.showPost = false;
         this.showPosts = false;
     }

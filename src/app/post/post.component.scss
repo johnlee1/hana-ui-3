@@ -3,28 +3,29 @@ mat-card:hover {
     cursor: pointer;
 }
 
-.date {
+.post_date {
     margin-bottom: 1%;
-    margin-top: 1%;
+}
+
+.post_header {
+    margin-top: 5%;
 }
 
 .prayer {
     font-size: 20px;
     margin-bottom: 5%;
-    margin-top: 5%;
 }
 
 .story {
     font-size: 20px;
     margin-bottom: 5%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
-.title {
+.subject {
     font-size: 36px;
-    margin-top: 10%;
 }
 
-.writing {
-    font-family: 'Merriweather';
-}
+// .writing {
+//     font-family: 'Merriweather';
+// }

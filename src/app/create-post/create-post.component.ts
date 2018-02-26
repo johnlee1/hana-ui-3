@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostService } from './../services/post.service';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-create-post',

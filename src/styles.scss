@@ -2,6 +2,7 @@
 
 $blue-color: #1072BA;
 $grey-light-color: rgba(0,0,0,.54);
+$red-color: red;
 
 $font-size-s: 18px;
 
@@ -73,6 +74,11 @@ div > .mat-nav-list {
     cursor: pointer
 }
 
+.subject .mat-form-field-infix {
+    border-top: 0;
+    padding-top: 0;
+}
+
 .text-center {
     text-align: center;
 }
@@ -80,3 +86,41 @@ div > .mat-nav-list {
 .ql-container {
     font-size: 20px;
 }
+
+
+// PRAYER POST STYLES BEGIN
+
+.post_body {
+    margin-bottom: 10%;
+}
+
+.post_body:hover {
+    cursor: pointer;
+}
+
+.post_date {
+    color: $grey-light-color;
+    font-size: 15px;
+}
+
+.post_header {
+    font-size: 16px;
+}
+
+.post_prayer {
+    color: $grey-light-color;
+    font-size: 16px;
+}
+
+.post_subject {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 1%;
+}
+
+.post_urgent {
+    text-decoration: underline;
+    text-decoration-color: $red-color;
+}
+
+// PRAYER POST STYLES END

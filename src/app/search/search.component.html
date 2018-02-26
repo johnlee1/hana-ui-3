@@ -8,11 +8,12 @@
 <div *ngIf="showResults" class="col-md-8 offset-md-2">
     <div *ngFor="let page of pages">
         <mat-card (click)="viewPage(page)" (mouseenter)='mouseenter($event)' (mouseleave)="mouseleave($event)">
-            <div class="pull-right">{{page.posts.length}} posts</div>
-            <h5>{{page.name}}</h5>
-            <div *ngIf="page.followers.length === 1" class="pull-right">{{page.followers.length}} follower</div>
-            <div *ngIf="page.followers.length != 1" class="pull-right">{{page.followers.length}} followers</div>
+            <div class="pageTitle">{{page.name}}</div>
             <div>{{page.description}}</div>
+            <div class="pageInfo">{{page.posts.length}} posts,
+                <span *ngIf="page.followers.length === 1">{{page.followers.length}} follower</span>
+                <span *ngIf="page.followers.length != 1">{{page.followers.length}} followers</span>
+            </div>
         </mat-card>
     </div>
 </div>

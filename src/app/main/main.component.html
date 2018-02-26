@@ -102,10 +102,6 @@
             <app-create-page (pageCreated)="pageCreated($event)"></app-create-page>
         </div>
 
-        <div *ngIf="showContentEnterPageCode">
-            <app-page-code></app-page-code>
-        </div>
-
         <div *ngIf="showContentList">
             <app-list [list]="list"></app-list>
         </div>
