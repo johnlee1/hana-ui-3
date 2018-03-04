@@ -11,7 +11,9 @@
     </mat-form-field>
     <button mat-button (click)="copyLink()">Copy Link</button>
     <input *ngIf="selected=='admin'" class="links" [value]="adminPageCode" readonly/>
+    <div *ngIf="selected=='admin'" class="description">An admin can create posts and edit the page.</div>
     <input *ngIf="selected=='contributor'" class="links" [value]="contributorPageCode" readonly/>
+    <div *ngIf="selected=='contributor'" class="description">A contributor can create posts.</div>
     <div class="input-group bottom">
         <div class="notificationWrapper">
             <div [hidden]="!notification" class="notification alert alert-warning">Link copied to clipboard.</div>

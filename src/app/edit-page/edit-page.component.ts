@@ -1,6 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Page } from './../page/page';
-// import { PageService } from './../services/page.service';
+import { PageService } from './../services/page.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { environment } from './../../environments/environment';
 
@@ -30,9 +30,11 @@ export class EditPageComponent implements OnInit {
     adminPageCode: string;
     contributorPageCode: string;
 
-    constructor(public dialog: MatDialog) {}
+    constructor(public dialog: MatDialog, private pageService: PageService) {}
 
     ngOnInit() {}
+
+    // utils
 
     openDialog(): void {
         let dialogRef = this.dialog.open(ShareableDialog, {
@@ -44,30 +46,6 @@ export class EditPageComponent implements OnInit {
             console.log('The dialog was closed');
         });
     }
-
-    // refreshCode() {
-    //     this.pageService.refreshCode(this.page._id)
-    //                     .subscribe(res => {
-    //                         this.page_code = res.code;
-    //                     })
-    // }
-
-    // utils
-
-    descriptionContentChanged(quill): void {
-        if (quill.editor.getLength() >= 2000)
-            quill.editor.deleteText(2000, quill.editor.getLength())
-    }
-
-    nameContentChanged(quill): void {
-        if (quill.editor.getLength() >= 200)
-            quill.editor.deleteText(200, quill.editor.getLength())
-    }
-
-    setFocus(editor) {
-        editor.focus()
-    }
-
 }
 
 @Component({

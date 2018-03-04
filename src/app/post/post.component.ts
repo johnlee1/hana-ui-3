@@ -12,6 +12,7 @@ import { ListService } from './../services/list.service';
 export class PostComponent implements OnInit {
 
     @Input() post: Post;
+    @Input() pageName: string;
     @Input() listId: string;
     @Output() postRemovedFromList = new EventEmitter<string>();
 

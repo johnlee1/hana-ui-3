@@ -1,42 +1,40 @@
-<div class="row">
-    <span class="col-md-2 write-header">name</span>
-    <quill-editor class="col-md-8"
-                    theme="bubble" 
-                    placeholder="what will this page be called?"
-                    [modules]="nameModules"
-                    [(ngModel)]="name"
-                    (onEditorCreated)="setFocus($event)"
-                    (onContentChanged)="nameContentChanged($event);">
-    </quill-editor>
+<div class="row name">
+    <span class="col-md-3 write-header">name</span>
+    <div class="col-md-6">
+        <input [(ngModel)]="name" class="input"/>
+    </div>
 </div>
 <div class="row">
-    <div class="col-md-2 write-header">description</div>
-    <quill-editor class="col-md-8"
-                    theme="bubble" 
-                    placeholder="what is this page about?"
-                    [modules]="descriptionModules"
-                    [(ngModel)]="description"
-                    (onContentChanged)="descriptionContentChanged($event);">
-    </quill-editor>
+    <div class="col-md-3 write-header">description</div>
+    <div class="col-md-6">
+        <textarea rows="5" [(ngModel)]="description" class="input"></textarea>
+    </div>
 </div>
-<div class="row">
-    <div class="col-md-2 write-header"></div>
-    <div class="col-md-8">
+<div class="row add">
+    <div class="col-md-3 write-header"></div>
+    <div class="col-md-6">
         <button class="btn btn-secondary btn-sm pointer" (click)="openDialog()">Add Admins or Contributors</button> 
     </div>
 </div>
-<!-- <div class="row">
-    <div class="col-md-2 write-header">admins</div>
-    <div class="col-md-8" *ngFor="let admin of admins">
-        {{admin.name}}
+<div class="row admins">
+    <div class="col-md-3 write-header">admins</div>
+    <div class="col-md-6" *ngFor="let admin of admins">
+        <div class="list-item">
+                {{admin.name}}
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2 write-header">contributors</div>
-    <div class="col-md-8" *ngFor="let contributor of contributors">
-        {{contributor.name}}
+    <div class="col-md-3 write-header">contributors</div>
+    <div class="col-md-6" *ngFor="let contributor of contributors">
+        <div class="list-item">
+            {{contributor.name}}
+        </div>
     </div>
-</div> -->
-<div class="col-md-10">
-    <button class="btn btn-outline-primary pointer submit-post-btn pull-right" color="primary" (click)="createPage()">Update Page</button>
+</div>
+<div class="row">
+    <span class="col-md-3"></span>
+    <div class="col-md-6">
+        <button class="btn btn-secondary btn-sm pointer submit-post-btn pull-right" color="primary" (click)="createPage()">Update Page</button>
+    </div>
 </div>

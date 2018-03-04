@@ -1,3 +1,15 @@
+.add {
+    margin-top: 1%;
+}
+
+.admins {
+    margin-top: 1%;
+}
+
+.input {
+    width: 100%;
+}
+
 .widthContainer {
     width: 120px;
 }
@@ -6,25 +18,34 @@
     padding-left: 0;
 }
 
-.mainFormElement {
-    margin-bottom: 5%;
+.description {
+    margin-top: 3%;
 }
 
-.minorFormElement {
+.list-item {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.list-item:hover {
+    background-color: #e6e6e6;
+}
+
+.name {
     margin-bottom: 1%;
+    margin-top: 3%;
 }
 
 .submit-post-btn {
     margin-bottom: 1%;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 
 .write-header {
-    align-items: center;
-    display: flex;
     font-size: 18px;
-    justify-content: flex-end;
+    text-align: right;
 }
+
 .bottom {
     width: 100%;
 }

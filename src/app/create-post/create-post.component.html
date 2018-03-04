@@ -1,38 +1,38 @@
 <div class="col-md-12">
     <div class="row subjectField">
-        <span class="col-md-2 write-header">Subject</span>
-        <mat-form-field class="subject">
-            <input matInput [(ngModel)]="newPostSubject">
-        </mat-form-field>
+        <span class="col-md-3 write-header">Subject</span>
+        <div class="col-md-6">
+            <input [(ngModel)]="newPostSubject"/>
+        </div>
     </div>
     <div class="row storyField">
-        <div class="col-md-2 write-header">The Story</div>
-        <quill-editor class="col-md-8" theme="snow" placeholder="Tell the story..."
-                      [modules]="storyModules"
-                      [(ngModel)]="newPostStory">
-        </quill-editor>
+        <span class="col-md-3 write-header">The Story</span>
+        <div class="col-md-6">
+            <textarea rows="10" [(ngModel)]="newPostStory" placeholder="Tell the story..."></textarea>
+        </div>
     </div>
     <div class="row prayerField">
-        <div class="col-md-2 write-header">Prayer</div>
-        <quill-editor class="col-md-8" theme="snow" placeholder="Write a prayer or share how to pray..."
-                      [modules]="prayerModules"
-                      [(ngModel)]="newPostPrayer">
-        </quill-editor>
+        <span class="col-md-3 write-header">Prayer</span>
+        <div class="col-md-6">
+            <textarea rows="5" [(ngModel)]="newPostPrayer" placeholder="Write a prayer or share how to pray..."></textarea>
+        </div>
     </div>
-    <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
+    <div class="row col-md-6 offset-md-3 checkbox minorFormElement">
         <mat-checkbox [(ngModel)]="urgent" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
     </div>
-    <div class="row col-md-8 offset-md-2 checkbox minorFormElement">
+    <div class="row col-md-6 offset-md-3 checkbox minorFormElement">
         <mat-checkbox [(ngModel)]="resolved" matTooltip="no longer needs prayer" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
     </div>
-    <div *ngIf="resolved" class="row mainFormElement">
-            <div class="col-md-2 write-header">resolution</div>
-            <quill-editor class="col-md-8" theme="snow" placeholder="Share what happened..."
-                          [modules]="storyModules"
-                          [(ngModel)]="resolution">
-            </quill-editor>
+    <div *ngIf="resolved" class="row">
+        <div class="col-md-3 write-header">Resolution</div>
+        <div class="col-md-6">
+            <textarea rows="5" [(ngModel)]="resolution" placeholder="Share what happened..."></textarea>
         </div>
-    <div class="col-md-10">
-        <button class="btn btn-secondary btn-sm custom-btn pointer submit-post-btn pull-right" (click)="submitPost()">Share Your Prayer Post</button>
+    </div>
+    <div class="row">
+        <span class="col-md-3 write-header"></span>
+        <div class="col-md-6">
+            <button class="btn btn-secondary btn-sm custom-btn pointer submit-post-btn pull-right" (click)="submitPost()">Share Your Prayer Post</button>
+        </div>
     </div>
 </div>

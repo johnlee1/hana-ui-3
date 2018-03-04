@@ -1,9 +1,14 @@
-<p>
-    my account
-</p>
-<button mat-raised-button (click)="signout()">sign out</button>
+<div class="col-md-6 offset-md-3">
+    <div class="title">My Account</div>
+</div>
 
-update name
-change email
-change password
-delete account
+<div class="col-md-6 offset-md-3">
+    <div>
+        We are currently looking to expand this section to include functionality such as changing your name, 
+        changing your email, changing your password, and deleting your account.
+    </div>
+</div>
+
+<div class="col-md-6 offset-md-3">
+    <button (click)="signout()" class="btn btn-secondary btn-sm pointer sign-out-btn">Sign Out</button>
+</div>

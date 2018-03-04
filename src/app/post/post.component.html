@@ -1,13 +1,14 @@
-<div class="col-md-8 offset-md-2">
-    <div class="post_header">{{post.author_name}}</div>
+<div class="col-md-6 offset-md-3">
+    <div>{{post.author_name}}</div>
+    <div>{{pageName}}</div>
     <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
     <div class="subject" [innerHTML]="post.subject"></div>
-    <div class="story writing" [innerHTML]="post.story"></div>
-    <div class="prayer writing" [innerHTML]="post.prayer"></div>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="pull-right">
+    <div class="story" [innerHTML]="post.story"></div>
+    <div class="prayer" [innerHTML]="post.prayer"></div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="options">
         <mat-icon>more_horiz</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="before">
+    <mat-menu #menu="matMenu" [overlapTrigger]="false" xPosition="after" yPosition="above">
         <button mat-menu-item (click)="addToList()">
             <!-- <mat-icon>dialpad</mat-icon> -->
             <span>Add to List</span>

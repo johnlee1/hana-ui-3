@@ -16,34 +16,10 @@ export class CreatePostComponent implements OnInit {
     resolution = " ";
     urgent: boolean = false; // must initialize
 
-    // quill
     emptyArray: any[] = [];
     newPostSubject;
     newPostStory;
     newPostPrayer;
-    // subjectModules = {
-    //     toolbar: [
-    //         ['italic', 'strike'],        // toggled buttons
-    //     ]
-    // };
-    storyModules = {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-            ['blockquote'],
-            [{ 'header': 1 }],                                // custom button values
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': this.emptyArray.slice() }],
-            ['clean'],                                        // remove formatting button
-            ['link', 'image']                                 // link and image, video
-        ]
-    };
-    prayerModules = {
-        toolbar: [
-            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-            [{ 'align': this.emptyArray.slice() }],
-            ['clean'],                                        // remove formatting button
-        ]
-    };
 
     // util
     toolTipPos: string = 'right';
@@ -51,11 +27,6 @@ export class CreatePostComponent implements OnInit {
     constructor(private router: Router, private postService: PostService) {}
 
     ngOnInit() {}
-
-    subjectContentChanged(quill) {
-        if (quill.editor.getLength() >= 200)
-            quill.editor.deleteText(200, quill.editor.getLength())
-    }
 
     submitPost() {
         let newPost = {};
@@ -74,9 +45,4 @@ export class CreatePostComponent implements OnInit {
                         });
     }
 
-    // utils
-
-    setFocus(editor) {
-        editor.focus();
-    }
 }

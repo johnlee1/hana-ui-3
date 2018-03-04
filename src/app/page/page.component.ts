@@ -76,6 +76,7 @@ export class PageComponent implements OnInit {
 
     setAllPropertiesToFalse() {
         this.showCreatePost = false;
+        this.showEditPage = false;
         this.showHeaderInfo = false;
         this.showPost = false;
         this.showPosts = false;

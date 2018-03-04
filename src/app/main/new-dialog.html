@@ -25,9 +25,11 @@
     <h1 mat-dialog-title>Create List</h1>
 
     <div mat-dialog-content>
-        <mat-form-field class="newDialogField">
-            <input matInput placeholder="Name" [(ngModel)]="name">
-        </mat-form-field>
+        <div>
+            <mat-form-field class="newDialogField">
+                <input matInput placeholder="Name" [(ngModel)]="name">
+            </mat-form-field>
+        </div>
         <div class="input-group bottom">
             <div class="btnWrapper">
                 <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="onNoClick()">Done</button>

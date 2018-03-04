@@ -106,4 +106,7 @@ mat-sidenav-content {
 .sidebar-toggle {
     margin-left: 3%;
     margin-top: 2%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 30px;
 }
