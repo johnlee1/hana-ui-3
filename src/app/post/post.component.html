@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
     <div>{{post.author_name}}</div>
-    <div>{{pageName}}</div>
+    <a class="link" [routerLink]="['/pages', post.page_id]">{{pageName}}</a>
     <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
     <div class="subject" [innerHTML]="post.subject"></div>
     <div class="story" [innerHTML]="post.story"></div>

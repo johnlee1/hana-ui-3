@@ -1,23 +1,7 @@
+@import "./../../styles.scss";
+
 .btns {
     margin-bottom: 10%;
-}
-
-// .card-resolved {
-//     border-right: 3px solid #00A676;
-// }
-
-.card-urgent {
-    border-right: 5px solid #D62246;
-}
-
-.chip-resolved {
-    background-color: green;
-    color: white;
-}
-
-.chip-urgent {
-    background-color: red;
-    color: white;
 }
 
 .chips {
@@ -34,11 +18,11 @@
 }
 
 .subject {
-    font-size: 24px;
+    font-size: $font-size-m;
 }
 
 .title {
-    font-size: 24px;
+    font-size: $font-size-m;
     margin-top: 2%;
 }
 

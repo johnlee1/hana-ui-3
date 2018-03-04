@@ -1,12 +1,25 @@
-<div  *ngIf="!showPost" class="col-md-8 offset-md-2">
+<div *ngIf="!showPost && queue.length > 0" class="col-md-6 offset-md-3">
     <div *ngFor="let post of queue">
         <div class="post_header">{{post.author_name}} posted in <a class="link" [routerLink]="['/pages', post.page_id]">{{post.page_name}}</a></div>
-
         <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
         <div (click)="viewPost(post)" class="post_body">
             <div class="post_subject" [ngClass]="{'post_urgent': post.urgent}">{{post.subject}}</div>
             <div [innerHTML]="post.prayer" class="post_prayer"></div>
         </div>
+    </div>
+</div>
+
+<div *ngIf="!showPost && queue.length == 0" class="col-md-6 offset-md-3">
+    <div class="introduction-description">
+        Welcome to Hana! Hana is an easy way to discover and share prayer requests. There are four steps you can take to get started with Hana.
+    </div>
+    <div class="introduction-description">
+        <ol>
+            <li>Search for topics and people you want to pray for.</li>
+            <li>Follow pages and their prayer posts will appear in your feed.</li>
+            <li>Create lists and add prayer posts to your lists to organize prayer posts.</li>
+            <li>Create your own page and start sharing prayer posts!</li>
+        </ol>
     </div>
 </div>
 

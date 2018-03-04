@@ -1,46 +1,8 @@
-@import "./../../styles.scss";
-
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-// #color_overlay {
-//     background-color: white;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     opacity: 0.8;
-// }
-
 .enter {
     margin-top: 2%;
 }
 
-// .main {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     padding-left: 15%;
-//     position: absolute;
-//     width: 100%;
-// }
-
-// .subtitle {
-//     color: $grey-light-color;
-//     font-size: $font-size-s;
-// }
-
 .description{
-    // font-family: 'Roboto';
     font-size: 1.5rem;
     font-weight: 200;
     margin-top: 7%;
@@ -50,7 +12,6 @@ img {
     font-size: 5.5rem;
     letter-spacing: 0.15em;
     text-indent: 0.15em;
-    // font-family: 'Roboto';
     font-weight: 100;
     line-height: 1.2;
     margin-bottom: 0;
@@ -58,7 +19,7 @@ img {
 
 .title-subtitle{
     font-size: 1.5rem;
-    font-family: 'Roboto';
+    font-family: 'Lato';
     font-weight: 300;
     letter-spacing: -0.02em;
     line-height: 1.6;

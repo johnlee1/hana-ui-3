@@ -1,3 +1,5 @@
+@import "./../../styles.scss";
+
 mat-list-item {
     margin-left: 10%;
     margin-right: 10%;
@@ -59,7 +61,7 @@ mat-sidenav-content {
 
 .fa-plus-circle, .fa-code {
     color:  rgba(66, 59, 59, 0.6);
-    font-size: 18px;
+    font-size: $font-size-s;
 }
 
 .fa-plus-circle:hover, .fa-code:hover {
@@ -81,7 +83,7 @@ mat-sidenav-content {
 .sidebar-header {
     align-items: center;
     display: inline-flex;
-    font-size: 24px;
+    font-size: $font-size-m;
     justify-content: space-between;
     margin-bottom: 2%;
     padding-left: 10%;
@@ -91,7 +93,7 @@ mat-sidenav-content {
 }
 
 .sidebar-header-2 {
-    font-size: 24px;
+    font-size: $font-size-m;
 }
 
 .sidebar-item {
