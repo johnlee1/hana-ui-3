@@ -2,7 +2,9 @@
 
 $blue-color: #1072BA;
 $grey-light-color: rgba(0,0,0,.54);
-$red-color: red;
+
+$color-red: red;
+$color-super-light-grey: #e6e6e6;
 
 $font-size-s: 18px;
 $font-size-m: 24px;
@@ -117,7 +119,7 @@ div > .mat-nav-list {
 
 .post_urgent {
     text-decoration: underline;
-    text-decoration-color: $red-color;
+    text-decoration-color: $color-red;
 }
 
 // PRAYER POST STYLES END

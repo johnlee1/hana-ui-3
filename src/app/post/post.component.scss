@@ -1,9 +1,11 @@
+@import "./../../styles.scss";
+
 .list_item {
     padding: 5px;
 }
 
 .list_item:hover {
-    background-color: #e6e6e6;
+    background-color: $color-super-light-grey;
     cursor: pointer;
 }
 
@@ -40,5 +42,10 @@
     font-size: 42px;
     font-weight: 700;
     line-height: 120%;
+    margin-top: 5%;
+}
+
+.urgent {
+    color: $color-red;
     margin-top: 5%;
 }

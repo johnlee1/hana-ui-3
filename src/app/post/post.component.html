@@ -2,6 +2,7 @@
     <div>{{post.author_name}}</div>
     <a class="link" [routerLink]="['/pages', post.page_id]">{{pageName}}</a>
     <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
+    <div *ngIf="post.urgent" class="urgent">This is an urgent prayer post.</div>
     <div class="subject" [innerHTML]="post.subject"></div>
     <div class="story" [innerHTML]="post.story"></div>
     <div class="prayer" [innerHTML]="post.prayer"></div>
