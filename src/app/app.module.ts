@@ -18,7 +18,6 @@ import { ListService } from './services/list.service';
 import { PostComponent } from './post/post.component';
 import { PageComponent } from './page/page.component';
 import { SearchComponent } from './search/search.component';
-import { CreatePageComponent } from './create-page/create-page.component';
 import { QueueComponent } from './queue/queue.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -42,7 +41,6 @@ import { ConfirmComponent } from './confirm/confirm.component';
     PostComponent,
     PageComponent,
     SearchComponent,
-    CreatePageComponent,
     QueueComponent,
     EditPageComponent,
     CreatePostComponent,

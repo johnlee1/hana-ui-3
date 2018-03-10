@@ -47,7 +47,6 @@ export class MainComponent implements OnInit {
 
     showContentAccount: boolean;
     showContentCreateList: boolean;
-    showContentCreatePage: boolean;
     showContentEnterPageCode: boolean;
     showContentList: boolean;
     showContentPage: boolean;
@@ -239,7 +238,6 @@ export class MainComponent implements OnInit {
 
     setAllContentPropertiesToFalse() {
         this.showContentAccount = false;
-        this.showContentCreatePage = false;
         this.showContentEnterPageCode = false;
         this.showContentList = false;
         this.showContentPage = false;

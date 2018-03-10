@@ -19,15 +19,17 @@ export class PageComponent implements OnInit {
         this.showHeaderInfo = true;
         this.showPosts = true;
         this.page = currentPage;
+        this.visibility = currentPage.private ? "Private" : "Public";
     }
 
-    page;
+    page: Page;
     post: Post;
     showCreatePost: boolean;
     showEditPage: boolean;
     showHeaderInfo: boolean;
     showPost: boolean;
     showPosts: boolean;
+    visibility: string;
 
     // util
     toolTipPos: string = 'right';

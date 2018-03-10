@@ -1,3 +1,6 @@
+import { Post } from './../post/post';
+
+
 export class Page {
     _id: string;
     name: string;
@@ -8,6 +11,7 @@ export class Page {
     admins: string[];
     contributors: string[];
     followers: string[];
-    posts: string[];
+    posts: Post[];
+    private: boolean;
 }
   

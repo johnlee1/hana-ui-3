@@ -2,8 +2,7 @@
     <div *ngIf="!showPost" class="title" (click)="returnToPage()">{{page.name}}</div>
     <div *ngIf="showHeaderInfo">
         <div class="description">{{page.description}}</div>
-        <div *ngIf="page.followers.length===1" class="followers description">{{page.followers.length}} follower</div>
-        <div *ngIf="page.followers.length!=1" class="followers description">{{page.followers.length}} followers</div>
+        <div class="info">{{page.followers.length}} follower<span *ngIf="page.followers.length!=1">s</span>, {{visibility}} page</div>
         <div class="btns">
             <button *ngIf="(level==='admin' || level==='contributor') && !showCreatePost" class="btn btn-secondary btn-sm custom-btn pointer" (click)="createPost()">Write a Prayer Post</button>
             <button *ngIf="level==='admin'" class="btn btn-secondary btn-sm custom-btn pointer" (click)="editPage()">Edit Page</button>
