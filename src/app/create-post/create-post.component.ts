@@ -12,37 +12,45 @@ export class CreatePostComponent implements OnInit {
     @Input() pageId: string;
     @Input() pageName: string;
 
+    newPostStory;
     resolved: boolean = false; // must initialize for sending http request
-    resolution = " ";
+    resolution;
     urgent: boolean = false; // must initialize
 
-    emptyArray: any[] = [];
-    newPostSubject;
-    newPostStory;
-    newPostPrayer;
-
     // util
-    toolTipPos: string = 'right';
+    toolTipPos: string = 'left';
+
+    // quill
+    storyModules = {
+        toolbar: [
+            ['bold', 'italic'],
+            [{ 'header': 1 }, 'blockquote'],
+            ['link', 'image']
+        ]
+    };
 
     constructor(private router: Router, private postService: PostService) {}
 
     ngOnInit() {}
 
     submitPost() {
+        if (this.resolution === "" || this.resolution === undefined)
+            this.resolution = " ";
         let newPost = {};
         newPost["id"] = this.pageId;
-        newPost["subject"] = this.newPostSubject;
         newPost["story"] = this.newPostStory;
-        newPost["prayer"] = this.newPostPrayer;
         newPost["resolved"] = this.resolved;
         newPost["resolution"] = this.resolution;
         newPost["urgent"] = this.urgent;
         newPost["authorName"] = localStorage.getItem('hanausername');
         newPost["pageName"] = this.pageName;
-        this.postService.createPost(newPost)
-                        .subscribe(res => {
-                            this.router.navigate(['/page/', this.pageId]);
-                        });
+        this.postService.createPost(newPost).subscribe(res => {
+            this.router.navigate(['/page/', this.pageId]);
+        });
     }
 
+    // utils
+    setFocus(editor) {
+        editor.focus();
+    }
 }

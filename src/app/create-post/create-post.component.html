@@ -1,38 +1,22 @@
-<div class="col-md-12">
-    <div class="row subjectField">
-        <span class="col-md-3 write-header">Subject</span>
-        <div class="col-md-6">
-            <input [(ngModel)]="newPostSubject"/>
-        </div>
-    </div>
-    <div class="row storyField">
-        <span class="col-md-3 write-header">The Story</span>
-        <div class="col-md-6">
-            <textarea rows="10" [(ngModel)]="newPostStory" placeholder="Tell the story..."></textarea>
-        </div>
-    </div>
-    <div class="row prayerField">
-        <span class="col-md-3 write-header">Prayer</span>
-        <div class="col-md-6">
-            <textarea rows="5" [(ngModel)]="newPostPrayer" placeholder="Write a prayer or share how to pray..."></textarea>
-        </div>
-    </div>
-    <div class="row col-md-6 offset-md-3 checkbox minorFormElement">
-        <mat-checkbox [(ngModel)]="urgent" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
-    </div>
-    <div class="row col-md-6 offset-md-3 checkbox minorFormElement">
-        <mat-checkbox [(ngModel)]="resolved" matTooltip="no longer needs prayer" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
-    </div>
-    <div *ngIf="resolved" class="row">
-        <div class="col-md-3 write-header">Resolution</div>
-        <div class="col-md-6">
+<div class="offset-md-3 col-md-6 storyField">
+    <quill-editor class="col-md-12" theme="bubble" (onEditorCreated)="setFocus($event)" 
+                    [modules]="storyModules" [(ngModel)]="newPostStory" placeholder="Tell the story and share how to pray...">
+    </quill-editor>
+    <div *ngIf="resolved">
+        <div class="write-header">Resolution</div>
+        <div class="col-md-12">
             <textarea rows="5" [(ngModel)]="resolution" placeholder="Share what happened..."></textarea>
         </div>
     </div>
-    <div class="row">
-        <span class="col-md-3 write-header"></span>
-        <div class="col-md-6">
-            <button class="btn btn-secondary btn-sm custom-btn pointer submit-post-btn pull-right" (click)="submitPost()">Share Your Prayer Post</button>
+    <div class="submit-post-btn">
+        <div>
+            <mat-checkbox [(ngModel)]="urgent" disableRipple="true" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
         </div>
+        <div class="uhh">
+            <mat-checkbox [(ngModel)]="resolved" disableRipple="true" matTooltip="no longer needs prayer" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
+        </div>
+        <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="submitPost()">
+            Share Your Prayer Post
+        </button>
     </div>
 </div>

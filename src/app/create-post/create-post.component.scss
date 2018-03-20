@@ -10,17 +10,17 @@ textarea {
     padding-left: 0;
 }
 
-.minorFormElement {
-    margin-bottom: 1%;
+.col-md-12 {
+    padding: 0;
 }
 
-.prayerField {
-    margin-bottom: 1%;
+.quill-editor {
+    padding: 0;
 }
 
 .storyField {
     margin-bottom: 1%;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 .subject {
@@ -34,11 +34,15 @@ textarea {
 }
 
 .submit-post-btn {
-    margin-bottom: 10%;
-    margin-top: 1%;
+    position: fixed;
+    top: 40px;
+    right: 50px;
+}
+
+.uhh {
+    margin-bottom: 5px;
 }
 
 .write-header {
-    font-size: 18px;
-    text-align: right;
+    margin-top: 10%;
 }
