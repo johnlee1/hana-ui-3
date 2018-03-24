@@ -87,7 +87,7 @@ export class AddListDialog {
 
     mouseenter(event) {
         this.renderer2.addClass(event.target, 'mat-elevation-z5')
-        }
+    }
         
     mouseleave(event) {
         this.renderer2.removeClass(event.target, 'mat-elevation-z5')

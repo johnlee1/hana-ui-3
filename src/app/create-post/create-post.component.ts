@@ -13,8 +13,9 @@ export class CreatePostComponent implements OnInit {
     @Input() pageName: string;
 
     newPostStory;
-    resolved: boolean = false; // must initialize for sending http request
-    resolution;
+    // resolved: boolean = false; // must initialize for sending http request
+    // resolution;
+    share: boolean = false;
     urgent: boolean = false; // must initialize
 
     // util
@@ -34,13 +35,13 @@ export class CreatePostComponent implements OnInit {
     ngOnInit() {}
 
     submitPost() {
-        if (this.resolution === "" || this.resolution === undefined)
-            this.resolution = " ";
+        // if (this.resolution === "" || this.resolution === undefined)
+        //     this.resolution = " ";
         let newPost = {};
         newPost["id"] = this.pageId;
         newPost["story"] = this.newPostStory;
-        newPost["resolved"] = this.resolved;
-        newPost["resolution"] = this.resolution;
+        // newPost["resolved"] = this.resolved;
+        // newPost["resolution"] = this.resolution;
         newPost["urgent"] = this.urgent;
         newPost["authorName"] = localStorage.getItem('hanausername');
         newPost["pageName"] = this.pageName;

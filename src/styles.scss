@@ -10,6 +10,10 @@ $font-size-s: 18px;
 $font-size-m: 24px;
 $font-size-l: 42px;
 
+p {
+    margin: 0;
+}
+
 .newDialogField {
     width: 600px;
 }
@@ -105,16 +109,19 @@ div > .mat-nav-list {
 // PRAYER POST STYLES BEGIN
 
 .post_body {
-    margin-bottom: 14%;
+    border-bottom: solid $color-super-light-grey 1px;
+    margin-bottom: 10%;
+    padding-bottom: 10%;
 }
 
-.post_body:hover {
-    cursor: pointer;
-}
+// .post_body:hover {
+//     cursor: pointer;
+// }
 
 .post_date {
     color: $grey-light-color;
     font-size: 15px;
+    margin-bottom: 3%;
 }
 
 .post_header {

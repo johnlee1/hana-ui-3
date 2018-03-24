@@ -2,10 +2,7 @@
     <div *ngFor="let post of queue">
         <div class="post_header">{{post.author_name}} posted in <a class="link" [routerLink]="['/pages', post.page_id]">{{post.page_name}}</a></div>
         <div class="post_date">{{post.create_date | date: 'MMMM d, y'}}</div>
-        <div (click)="viewPost(post)" class="post_body">
-            <div class="post_subject" [ngClass]="{'post_urgent': post.urgent}">{{post.subject}}</div>
-            <div [innerHTML]="post.prayer" class="post_prayer"></div>
-        </div>
+        <div class="post_body" [innerHTML]="post.story"></div>
     </div>
 </div>
 

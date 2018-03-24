@@ -1,3 +1,5 @@
+@import "./../../styles.scss";
+
 input {
     width: 100%;
 }
@@ -14,13 +16,25 @@ textarea {
     padding: 0;
 }
 
+.custom-btn {
+    display: flex;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.header {
+    border-bottom: solid $color-super-light-grey 1px;
+    padding: 0 0 1% 0;
+}
+
 .quill-editor {
     padding: 0;
 }
 
 .storyField {
     margin-bottom: 1%;
-    margin-top: 2%;
+    margin-top: 3%;
+    padding: 0;
 }
 
 .subject {
@@ -34,9 +48,14 @@ textarea {
 }
 
 .submit-post-btn {
-    position: fixed;
-    top: 40px;
-    right: 50px;
+    background-color: white;
+    border: solid $grey-light-color 2px;
+    border-radius: 3px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 250px;
+    z-index: 10;
 }
 
 .uhh {

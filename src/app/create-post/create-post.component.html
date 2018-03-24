@@ -1,22 +1,33 @@
+<div class="offset-md-3 col-md-6 header">
+    <div class="row">
+        <div class="col-md-8">
+            This post will appear in <span class="link" (click)="returnToPage()">{{pageName}}</span>
+        </div>
+        <div class="col-md-4">
+            <span class="pointer pull-right" (click)="share=!share">
+                Share Your Prayer Post
+            </span>
+            <div *ngIf="share" class="col-md-12 submit-post-btn">
+                <div>
+                    <mat-checkbox [(ngModel)]="urgent" disableRipple="true" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
+                </div>
+                <button class="btn btn-secondary btn-sm custom-btn pointer" (click)="submitPost()">
+                    Share Your Prayer Post
+                </button>
+            </div>
+            <div class="popover-arrow"></div>
+        </div>
+    </div>
+</div>
+
 <div class="offset-md-3 col-md-6 storyField">
     <quill-editor class="col-md-12" theme="bubble" (onEditorCreated)="setFocus($event)" 
                     [modules]="storyModules" [(ngModel)]="newPostStory" placeholder="Tell the story and share how to pray...">
     </quill-editor>
-    <div *ngIf="resolved">
+    <!-- <div *ngIf="resolved">
         <div class="write-header">Resolution</div>
         <div class="col-md-12">
             <textarea rows="5" [(ngModel)]="resolution" placeholder="Share what happened..."></textarea>
         </div>
-    </div>
-    <div class="submit-post-btn">
-        <div>
-            <mat-checkbox [(ngModel)]="urgent" disableRipple="true" matTooltip="time-sensitive prayer request" [matTooltipPosition]="toolTipPos">Urgent</mat-checkbox>
-        </div>
-        <div class="uhh">
-            <mat-checkbox [(ngModel)]="resolved" disableRipple="true" matTooltip="no longer needs prayer" [matTooltipPosition]="toolTipPos">Resolved</mat-checkbox>
-        </div>
-        <button class="btn btn-secondary btn-sm custom-btn pointer pull-right" (click)="submitPost()">
-            Share Your Prayer Post
-        </button>
-    </div>
+    </div> -->
 </div>
